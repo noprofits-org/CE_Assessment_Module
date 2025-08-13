@@ -52,6 +52,11 @@ self.addEventListener('activate', event => {
 
 // Fetch event - serve from cache when offline, network first for data files
 self.addEventListener('fetch', event => {
+  // Ignore chrome extension requests
+  if (event.request.url.startsWith('chrome-extension://')) {
+    return;
+  }
+  
   // For data files, try network first, then cache
   if (event.request.url.includes('data/')) {
     event.respondWith(

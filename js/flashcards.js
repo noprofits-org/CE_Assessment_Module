@@ -12,6 +12,10 @@ class FlashcardManager {
         this.keyboardHandler = null; // Store keyboard handler reference
         this.isInitialized = false;
         this.loadCards();
+        // Give DOM time to fully render
+        setTimeout(() => {
+            this.initializeEventListeners();
+        }, 100);
     }
 
     async loadCards() {
@@ -32,12 +36,6 @@ class FlashcardManager {
             this.currentIndex = storage.getValue('flashcards.currentCardIndex') || 0;
             this.displayCard();
             this.updateUI();
-            
-            // Initialize event listeners after cards are loaded
-            // Use setTimeout to ensure DOM is ready
-            setTimeout(() => {
-                this.initializeEventListeners();
-            }, 100);
         } catch (error) {
             console.error('Error loading flashcards:', error);
             this.displayError();
@@ -79,6 +77,8 @@ class FlashcardManager {
         const prevBtn = document.getElementById('prev-card');
         const flashcard = document.getElementById('flashcard');
         const masterBtn = document.getElementById('master-card');
+        
+        console.log('Attaching handlers - flipBtn:', flipBtn, 'flashcard:', flashcard);
 
         // Remove existing handlers if they exist
         if (this.eventHandlers.flip) {
@@ -731,32 +731,12 @@ class FlashcardManager {
 let flashcardManager;
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize when flashcards section becomes active
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                const flashcardsSection = document.getElementById('flashcards');
-                if (flashcardsSection) {
-                    if (flashcardsSection.classList.contains('active')) {
-                        // Create manager if it doesn't exist
-                        if (!flashcardManager) {
-                            flashcardManager = new FlashcardManager();
-                        }
-                    } else {
-                        // Cleanup when section becomes inactive
-                        if (flashcardManager) {
-                            flashcardManager.cleanup();
-                            flashcardManager = null;
-                        }
-                    }
-                }
-            }
-        });
-    });
-
+    // Create manager immediately if flashcards section exists
     const flashcardsSection = document.getElementById('flashcards');
     if (flashcardsSection) {
-        observer.observe(flashcardsSection, { attributes: true });
+        console.log('Initializing FlashcardManager');
+        flashcardManager = new FlashcardManager();
+        window.flashcardManager = flashcardManager;
     }
     
     // Listen for search events from scenarios
