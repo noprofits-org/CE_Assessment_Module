@@ -2,7 +2,7 @@
   "name": "CE Housing Assessor Study Tool",
   "short_name": "CE Study",
   "description": "Study tool for Housing Assessor certification",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "theme_color": "#2563eb",
   "background_color": "#ffffff",

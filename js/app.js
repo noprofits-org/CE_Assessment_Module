@@ -113,6 +113,9 @@ class App {
                     if (typeof FlashcardManager !== 'undefined') {
                         window.flashcardManager = new FlashcardManager();
                     }
+                } else if (window.flashcardManager && section === 'flashcards') {
+                    // Ensure event listeners are attached when showing the section
+                    window.flashcardManager.ensureInitialized();
                 }
                 break;
             case 'tests':

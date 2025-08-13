@@ -1,19 +1,19 @@
 const CACHE_NAME = 'ce-study-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/js/app.js',
-  '/js/storage.js',
-  '/js/flashcards.js',
-  '/js/tests.js',
-  '/js/scenarios.js',
-  '/js/progress.js',
-  '/js/gamification.js',
-  '/js/storage-monitor.js',
-  '/data/terms.json',
-  '/data/questions.json',
-  '/data/scenarios.json',
+  './',
+  'index.html',
+  'styles.css',
+  'js/app.js',
+  'js/storage.js',
+  'js/flashcards.js',
+  'js/tests.js',
+  'js/scenarios.js',
+  'js/progress.js',
+  'js/gamification.js',
+  'js/storage-monitor.js',
+  'data/terms.json',
+  'data/questions.json',
+  'data/scenarios.json',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
@@ -53,7 +53,7 @@ self.addEventListener('activate', event => {
 // Fetch event - serve from cache when offline, network first for data files
 self.addEventListener('fetch', event => {
   // For data files, try network first, then cache
-  if (event.request.url.includes('/data/')) {
+  if (event.request.url.includes('data/')) {
     event.respondWith(
       fetch(event.request)
         .then(response => {
@@ -95,7 +95,7 @@ self.addEventListener('fetch', event => {
         .catch(() => {
           // Offline fallback
           if (event.request.destination === 'document') {
-            return caches.match('/index.html');
+            return caches.match('index.html');
           }
         })
     );

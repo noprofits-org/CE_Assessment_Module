@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE Housing Assessor Study Tool - Page Not Found</title>
+    <script>
+        // Get the current path
+        const path = window.location.pathname;
+        const hash = window.location.hash;
+        
+        // GitHub Pages serves the app from /CE_Assessment_Module/
+        // If we're on a 404 page, redirect to the main app with the hash preserved
+        const basePath = '/CE_Assessment_Module/';
+        
+        // Construct the redirect URL
+        let redirectUrl = basePath;
+        
+        // If there's a hash, append it
+        if (hash) {
+            redirectUrl += hash;
+        } else if (path && path !== basePath && path !== basePath.slice(0, -1)) {
+            // Convert the path to a hash fragment
+            // Remove the base path if present
+            let cleanPath = path.replace(basePath, '').replace(/^\//, '');
+            if (cleanPath) {
+                redirectUrl += '#' + cleanPath;
+            }
+        }
+        
+        // Redirect to the main app
+        window.location.replace(redirectUrl);
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Redirecting...</h1>
+        <p>Taking you to the CE Housing Assessor Study Tool</p>
+        <div class="spinner"></div>
+        <noscript>
+            <p>JavaScript is required for this application.</p>
+            <p><a href="/CE_Assessment_Module/">Click here to continue to the app</a></p>
+        </noscript>
+    </div>
+</body>
+</html>

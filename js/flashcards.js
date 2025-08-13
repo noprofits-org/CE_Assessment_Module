@@ -10,8 +10,8 @@ class FlashcardManager {
         this.selectedCategory = '';
         this.eventHandlers = {}; // Store event handler references
         this.keyboardHandler = null; // Store keyboard handler reference
+        this.isInitialized = false;
         this.loadCards();
-        this.initializeEventListeners();
     }
 
     async loadCards() {
@@ -32,6 +32,12 @@ class FlashcardManager {
             this.currentIndex = storage.getValue('flashcards.currentCardIndex') || 0;
             this.displayCard();
             this.updateUI();
+            
+            // Initialize event listeners after cards are loaded
+            // Use setTimeout to ensure DOM is ready
+            setTimeout(() => {
+                this.initializeEventListeners();
+            }, 100);
         } catch (error) {
             console.error('Error loading flashcards:', error);
             this.displayError();
@@ -39,6 +45,7 @@ class FlashcardManager {
     }
 
     initializeEventListeners() {
+        
         // Remove any existing keyboard handler
         if (this.keyboardHandler) {
             document.removeEventListener('keydown', this.keyboardHandler);
@@ -55,6 +62,14 @@ class FlashcardManager {
 
         // Attach static button handlers (these don't change)
         this.attachStaticHandlers();
+        this.isInitialized = true;
+    }
+    
+    // Method to ensure handlers are attached when section is shown
+    ensureInitialized() {
+        if (!this.isInitialized) {
+            this.initializeEventListeners();
+        }
     }
 
     attachStaticHandlers() {
@@ -85,6 +100,7 @@ class FlashcardManager {
         this.eventHandlers.flip = this.flipCard.bind(this);
         this.eventHandlers.flipTouch = (e) => {
             e.preventDefault();
+            e.stopPropagation();
             this.flipCard();
         };
         this.eventHandlers.next = this.nextCard.bind(this);
@@ -92,7 +108,9 @@ class FlashcardManager {
         this.eventHandlers.master = this.markAsMastered.bind(this);
 
         // Attach new handlers with passive: true for better touch performance
-        if (flipBtn) flipBtn.addEventListener('click', this.eventHandlers.flip, { passive: true });
+        if (flipBtn) {
+            flipBtn.addEventListener('click', this.eventHandlers.flip, { passive: true });
+        }
         if (nextBtn) nextBtn.addEventListener('click', this.eventHandlers.next, { passive: true });
         if (prevBtn) prevBtn.addEventListener('click', this.eventHandlers.prev, { passive: true });
         if (flashcard) {
@@ -218,7 +236,7 @@ class FlashcardManager {
         const termElement = document.getElementById('flashcard-term');
         const definitionElement = document.getElementById('flashcard-definition');
         
-        if (termElement && definitionElement) {
+        if (termElement && definitionElement && card) {
             termElement.textContent = card.term;
             definitionElement.innerHTML = this.formatDefinition(card.definition);
             
@@ -227,6 +245,13 @@ class FlashcardManager {
             const flashcardElement = document.getElementById('flashcard');
             if (flashcardElement) {
                 flashcardElement.classList.remove('flipped');
+                
+                // Re-attach handlers if needed (in case DOM was recreated)
+                if (this.isInitialized) {
+                    setTimeout(() => {
+                        this.attachStaticHandlers();
+                    }, 50);
+                }
             }
             
             // Track view
