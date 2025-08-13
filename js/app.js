@@ -204,16 +204,23 @@ class App {
         const stats = storage.getStatistics();
         const testHistory = storage.getValue('testHistory') || [];
         
-        // Update statistics
-        document.getElementById('total-sessions').textContent = stats.totalSessions;
-        document.getElementById('cards-mastered').textContent = stats.cardsMastered;
-        document.getElementById('tests-completed').textContent = testHistory.length;
+        // Add null checks before setting textContent
+        const totalSessionsEl = document.getElementById('total-sessions');
+        if (totalSessionsEl) totalSessionsEl.textContent = stats.totalSessions;
+        
+        const cardsMasteredEl = document.getElementById('cards-mastered');
+        if (cardsMasteredEl) cardsMasteredEl.textContent = stats.cardsMastered;
+        
+        const testsCompletedEl = document.getElementById('tests-completed');
+        if (testsCompletedEl) testsCompletedEl.textContent = testHistory.length;
         
         // Convert total study time to hours and minutes
         const hours = Math.floor(stats.totalStudyTime / 3600);
         const minutes = Math.floor((stats.totalStudyTime % 3600) / 60);
-        document.getElementById('total-time').textContent = 
-            hours > 0 ? `${hours}h ${minutes}m` : `${minutes} minutes`;
+        const totalTimeEl = document.getElementById('total-time');
+        if (totalTimeEl) {
+            totalTimeEl.textContent = hours > 0 ? `${hours}h ${minutes}m` : `${minutes} minutes`;
+        }
         
         // Update chart
         this.updateScoreChart();

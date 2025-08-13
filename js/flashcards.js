@@ -82,14 +82,14 @@ class FlashcardManager {
         }
 
         // Create and store new handlers
-        this.eventHandlers.flip = () => this.flipCard();
+        this.eventHandlers.flip = this.flipCard.bind(this);
         this.eventHandlers.flipTouch = (e) => {
             e.preventDefault();
             this.flipCard();
         };
-        this.eventHandlers.next = () => this.nextCard();
-        this.eventHandlers.prev = () => this.previousCard();
-        this.eventHandlers.master = () => this.markAsMastered();
+        this.eventHandlers.next = this.nextCard.bind(this);
+        this.eventHandlers.prev = this.previousCard.bind(this);
+        this.eventHandlers.master = this.markAsMastered.bind(this);
 
         // Attach new handlers with passive: true for better touch performance
         if (flipBtn) flipBtn.addEventListener('click', this.eventHandlers.flip, { passive: true });
