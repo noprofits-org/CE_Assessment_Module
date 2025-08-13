@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CE Housing Assessor Study Tool</title>
+    <meta name="description" content="Study tool for Housing Assessor certification with flashcards, practice tests, and scenarios">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    
+    <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><i class="fas fa-home"></i> CE Housing Assessor</a>
+            <div id="offline-indicator" class="badge bg-warning text-dark ms-2" style="display: none;">
+                <i class="fas fa-wifi-slash"></i> Offline
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -102,6 +114,44 @@
                 </div>
             </div>
 
+            <!-- Gamification Section -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="gamification-widget">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="gamification-header">
+                                    <h4 class="mb-2">Your Progress</h4>
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <div>
+                                            <span id="level-name" class="h5 mb-0">Novice</span>
+                                            <span class="ms-2">Level <span id="current-level">1</span></span>
+                                        </div>
+                                        <div class="points-display">
+                                            <i class="fas fa-coins"></i> <span id="total-points">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="level-progress">
+                                        <div class="level-progress-bar" id="level-progress-bar" style="width: 0%"></div>
+                                    </div>
+                                    <small class="d-block mt-1">Next level: <span id="next-level-points">100</span> points</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="daily-challenge-card" id="daily-challenge">
+                                    <h5 class="mb-2"><i class="fas fa-star"></i> Daily Challenge</h5>
+                                    <p class="mb-1" id="challenge-name">Loading...</p>
+                                    <small id="challenge-description">Loading...</small>
+                                    <div class="challenge-progress mt-2">
+                                        <div class="challenge-progress-bar" id="challenge-progress-bar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row mt-4">
                 <div class="col-md-8">
                     <h3>Quick Start</h3>
@@ -114,6 +164,16 @@
                         </button>
                         <button class="btn btn-info btn-lg" onclick="navigateToSection('scenarios')">
                             <i class="fas fa-briefcase"></i> Practice Scenarios
+                        </button>
+                    </div>
+                    
+                    <!-- App Management Buttons -->
+                    <div class="mt-3">
+                        <button id="install-btn" class="btn btn-warning" style="display: none;">
+                            <i class="fas fa-download"></i> Install App
+                        </button>
+                        <button class="btn btn-secondary" onclick="storageMonitor.showStorageUI()">
+                            <i class="fas fa-database"></i> Manage Storage
                         </button>
                     </div>
                 </div>
@@ -130,6 +190,16 @@
                                 <small class="text-muted">0 terms reviewed</small>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h3>Achievements</h3>
+                    <div class="achievement-grid" id="achievements-grid">
+                        <!-- Achievements will be populated here -->
                     </div>
                 </div>
             </div>
@@ -413,6 +483,9 @@
                 </div>
             </div>
             
+            <!-- Test History Container -->
+            <div id="test-history-container"></div>
+            
             <!-- Data Management -->
             <div class="row">
                 <div class="col-12">
@@ -447,10 +520,64 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/storage.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/storage-monitor.js"></script>
     <script src="js/flashcards.js"></script>
     <script src="js/tests.js"></script>
     <script src="js/scenarios.js"></script>
     <script src="js/progress.js"></script>
     <script src="js/app.js"></script>
+    
+    <!-- Service Worker Registration & PWA Scripts -->
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered:', registration);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed:', err);
+                    });
+            });
+        }
+        
+        // Online/Offline indicator
+        function updateOnlineStatus() {
+            const indicator = document.getElementById('offline-indicator');
+            if (navigator.onLine) {
+                indicator.style.display = 'none';
+            } else {
+                indicator.style.display = 'inline-block';
+            }
+        }
+        
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+        
+        // PWA Install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button
+            const installBtn = document.getElementById('install-btn');
+            if (installBtn) {
+                installBtn.style.display = 'block';
+                installBtn.addEventListener('click', () => {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('User accepted the install prompt');
+                        }
+                        deferredPrompt = null;
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

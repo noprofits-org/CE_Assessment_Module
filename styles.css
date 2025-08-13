@@ -95,6 +95,7 @@ body {
     perspective: 1000px;
     margin: 0 auto;
     max-width: 600px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .flashcard {
@@ -104,6 +105,10 @@ body {
     transition: transform 0.6s;
     transform-style: preserve-3d;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .flashcard.flipped .flashcard-inner {
@@ -182,6 +187,12 @@ body {
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.flashcard-controls .btn {
+    min-width: 120px;
+    touch-action: manipulation;
 }
 
 /* Flashcard Stats */
@@ -231,6 +242,9 @@ body {
     transition: var(--transition);
     cursor: pointer;
     position: relative;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .answer-option:hover:not(:disabled) {
@@ -339,6 +353,11 @@ body {
     padding: 0.5rem 1.5rem;
     font-weight: 500;
     transition: var(--transition);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn-lg {
@@ -661,5 +680,264 @@ button:focus, .btn:focus {
     
     .option-button {
         padding: 0.75rem;
+    }
+}
+
+/* Gamification Styles */
+.gamification-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.level-progress {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.level-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+    transition: width 0.5s ease;
+}
+
+.points-display {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.achievement-item {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0;
+    transition: var(--transition);
+    cursor: default;
+}
+
+.achievement-item.unlocked {
+    background-color: #fef3c7;
+    border-color: #fbbf24;
+}
+
+.achievement-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
+}
+
+.achievement-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #cbd5e1;
+}
+
+.achievement-item.unlocked .achievement-icon {
+    color: #f59e0b;
+}
+
+.achievement-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.achievement-description {
+    font-size: 0.75rem;
+    color: var(--secondary-color);
+}
+
+.daily-challenge-card {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-progress {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.challenge-progress-bar {
+    height: 100%;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+/* Notification Styles */
+.achievement-notification,
+.levelup-notification,
+.challenge-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    min-width: 300px;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+}
+
+.achievement-notification.show,
+.levelup-notification.show,
+.challenge-notification.show {
+    transform: translateX(0);
+}
+
+.achievement-content,
+.levelup-content,
+.challenge-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.achievement-icon,
+.levelup-icon,
+.challenge-icon {
+    font-size: 2.5rem;
+    color: #f59e0b;
+}
+
+.levelup-icon {
+    color: #8b5cf6;
+}
+
+.challenge-icon {
+    color: #22c55e;
+}
+
+.achievement-notification h5,
+.levelup-notification h4,
+.challenge-notification h5 {
+    margin: 0;
+    font-weight: 700;
+}
+
+.achievement-notification p,
+.levelup-notification p,
+.challenge-notification p {
+    margin: 0.25rem 0;
+    color: var(--secondary-color);
+}
+
+.achievement-notification small,
+.challenge-notification small {
+    color: #22c55e;
+    font-weight: 600;
+}
+
+/* Gamification Dashboard Widget */
+.gamification-widget {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.gamification-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.gamification-stat {
+    text-align: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.gamification-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.gamification-stat-label {
+    font-size: 0.75rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Motivational Messages */
+.motivational-message {
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Confetti container */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* Touch-friendly form controls */
+.form-select, .form-control {
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .achievement-notification,
+    .levelup-notification,
+    .challenge-notification {
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        transform: translateY(-100px);
+    }
+    
+    .achievement-notification.show,
+    .levelup-notification.show,
+    .challenge-notification.show {
+        transform: translateY(0);
+    }
+    
+    .achievement-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    .gamification-header {
+        padding: 0.75rem;
+    }
+    
+    .points-display {
+        font-size: 1.25rem;
     }
 }

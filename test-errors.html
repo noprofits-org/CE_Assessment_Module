@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error Check</title>
+</head>
+<body>
+    <h1>Console Error Check</h1>
+    <p>Open the console to check for any errors.</p>
+    
+    <script>
+        // Test for common errors
+        console.log('=== Testing for Common Errors ===');
+        
+        // Test 1: Chart.js availability
+        if (typeof Chart === 'undefined') {
+            console.error('Chart.js is not loaded');
+        } else {
+            console.log('✓ Chart.js is loaded');
+        }
+        
+        // Test 2: localStorage availability
+        try {
+            localStorage.setItem('test', 'test');
+            localStorage.removeItem('test');
+            console.log('✓ localStorage is available');
+        } catch (e) {
+            console.error('localStorage is not available:', e);
+        }
+        
+        // Test 3: Check for required elements
+        const requiredIds = [
+            'study-streak', 'cards-reviewed', 'avg-score', 'study-time',
+            'current-level', 'level-name', 'total-points', 'next-level-points',
+            'level-progress-bar', 'challenge-name', 'challenge-description',
+            'challenge-progress-bar', 'daily-challenge', 'achievements-grid',
+            'test-selection', 'test-container', 'test-results',
+            'flashcard', 'flashcard-term', 'flashcard-definition',
+            'metric-streak', 'metric-questions', 'metric-avg-score', 'metric-cards-mastered'
+        ];
+        
+        console.log('\n=== Checking Required Element IDs ===');
+        const missingIds = [];
+        requiredIds.forEach(id => {
+            if (!document.getElementById(id)) {
+                missingIds.push(id);
+            }
+        });
+        
+        if (missingIds.length > 0) {
+            console.error('Missing element IDs:', missingIds);
+        } else {
+            console.log('✓ All required element IDs are present');
+        }
+        
+        // Test 4: Check global objects
+        console.log('\n=== Checking Global Objects ===');
+        const globalObjects = [
+            'storage', 'gamificationManager', 'storageMonitor'
+        ];
+        
+        globalObjects.forEach(obj => {
+            if (typeof window[obj] === 'undefined') {
+                console.warn(`Global object '${obj}' is not defined`);
+            } else {
+                console.log(`✓ ${obj} is available`);
+            }
+        });
+        
+        // Test 5: Check for null reference errors
+        console.log('\n=== Testing Null Reference Protection ===');
+        try {
+            // This should not throw an error
+            const testEl = document.getElementById('non-existent-element');
+            if (testEl) {
+                testEl.textContent = 'test';
+            }
+            console.log('✓ Null reference protection working');
+        } catch (e) {
+            console.error('Null reference error:', e);
+        }
+        
+        console.log('\n=== Error Check Complete ===');
+    </script>
+</body>
+</html>

@@ -8,6 +8,8 @@ class FlashcardManager {
         this.mode = 'all'; // 'all', 'testPrep', 'category'
         this.isShuffled = false;
         this.selectedCategory = '';
+        this.eventHandlers = {}; // Store event handler references
+        this.keyboardHandler = null; // Store keyboard handler reference
         this.loadCards();
         this.initializeEventListeners();
     }
@@ -37,18 +39,85 @@ class FlashcardManager {
     }
 
     initializeEventListeners() {
+        // Remove any existing keyboard handler
+        if (this.keyboardHandler) {
+            document.removeEventListener('keydown', this.keyboardHandler);
+        }
+
+        // Create keyboard handler
+        this.keyboardHandler = (event) => {
+            const flashcardsSection = document.getElementById('flashcards');
+            if (flashcardsSection && flashcardsSection.classList.contains('active')) {
+                this.handleKeyPress(event);
+            }
+        };
+        document.addEventListener('keydown', this.keyboardHandler);
+
+        // Attach static button handlers (these don't change)
+        this.attachStaticHandlers();
+    }
+
+    attachStaticHandlers() {
+        // Card navigation - these elements don't get recreated
+        const flipBtn = document.getElementById('flip-card');
+        const nextBtn = document.getElementById('next-card');
+        const prevBtn = document.getElementById('prev-card');
+        const flashcard = document.getElementById('flashcard');
+        const masterBtn = document.getElementById('master-card');
+
+        // Remove existing handlers if they exist
+        if (this.eventHandlers.flip) {
+            flipBtn?.removeEventListener('click', this.eventHandlers.flip);
+            flashcard?.removeEventListener('click', this.eventHandlers.flip);
+            flashcard?.removeEventListener('touchend', this.eventHandlers.flipTouch);
+        }
+        if (this.eventHandlers.next) {
+            nextBtn?.removeEventListener('click', this.eventHandlers.next);
+        }
+        if (this.eventHandlers.prev) {
+            prevBtn?.removeEventListener('click', this.eventHandlers.prev);
+        }
+        if (this.eventHandlers.master) {
+            masterBtn?.removeEventListener('click', this.eventHandlers.master);
+        }
+
+        // Create and store new handlers
+        this.eventHandlers.flip = () => this.flipCard();
+        this.eventHandlers.flipTouch = (e) => {
+            e.preventDefault();
+            this.flipCard();
+        };
+        this.eventHandlers.next = () => this.nextCard();
+        this.eventHandlers.prev = () => this.previousCard();
+        this.eventHandlers.master = () => this.markAsMastered();
+
+        // Attach new handlers with passive: true for better touch performance
+        if (flipBtn) flipBtn.addEventListener('click', this.eventHandlers.flip, { passive: true });
+        if (nextBtn) nextBtn.addEventListener('click', this.eventHandlers.next, { passive: true });
+        if (prevBtn) prevBtn.addEventListener('click', this.eventHandlers.prev, { passive: true });
+        if (flashcard) {
+            // Add both click and touch events for flashcard
+            flashcard.addEventListener('click', this.eventHandlers.flip, { passive: true });
+            // Add touch support for mobile
+            flashcard.addEventListener('touchend', this.eventHandlers.flipTouch, { passive: false });
+        }
+        if (masterBtn) masterBtn.addEventListener('click', this.eventHandlers.master, { passive: true });
+    }
+
+    attachDynamicHandlers() {
+        // These handlers are for dynamically created elements
         // Mode selector
         const modeButtons = document.querySelectorAll('[data-mode]');
         modeButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 this.setMode(e.target.dataset.mode);
-            });
+            }, { passive: true });
         });
 
         // Shuffle toggle
         const shuffleBtn = document.getElementById('shuffle-toggle');
         if (shuffleBtn) {
-            shuffleBtn.addEventListener('click', () => this.toggleShuffle());
+            shuffleBtn.addEventListener('click', () => this.toggleShuffle(), { passive: true });
         }
 
         // Category filter
@@ -56,32 +125,7 @@ class FlashcardManager {
         if (categorySelect) {
             categorySelect.addEventListener('change', (e) => {
                 this.filterByCategory(e.target.value);
-            });
-        }
-
-        // Card navigation
-        const flipBtn = document.getElementById('flip-card');
-        const nextBtn = document.getElementById('next-card');
-        const prevBtn = document.getElementById('prev-card');
-        const flashcard = document.getElementById('flashcard');
-
-        if (flipBtn) flipBtn.addEventListener('click', () => this.flipCard());
-        if (nextBtn) nextBtn.addEventListener('click', () => this.nextCard());
-        if (prevBtn) prevBtn.addEventListener('click', () => this.previousCard());
-        if (flashcard) flashcard.addEventListener('click', () => this.flipCard());
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (event) => {
-            const flashcardsSection = document.getElementById('flashcards');
-            if (flashcardsSection && flashcardsSection.classList.contains('active')) {
-                this.handleKeyPress(event);
-            }
-        });
-
-        // Mark as mastered button
-        const masterBtn = document.getElementById('master-card');
-        if (masterBtn) {
-            masterBtn.addEventListener('click', () => this.markAsMastered());
+            }, { passive: true });
         }
     }
 
@@ -239,6 +283,39 @@ class FlashcardManager {
         
         // Calculate and update readiness score
         this.updateReadinessScore();
+        
+        // Gamification: Track flashcard review
+        if (window.gamificationManager) {
+            gamificationManager.recordStudyTime();
+            gamificationManager.addPoints(1, 'Reviewed flashcard');
+            
+            // Update daily stats for challenges
+            const stats = {
+                flashcardsReviewed: storage.getValue('flashcards.cardsReviewed')?.length || 0
+            };
+            
+            // Check if studying a specific category
+            const currentCard = this.filteredCards[this.currentIndex];
+            if (currentCard && this.mode === 'category') {
+                const dailyStats = gamificationManager.getData().dailyStats[new Date().toDateString()] || {};
+                const categoriesStudied = dailyStats.categoriesStudied || [];
+                if (!categoriesStudied.includes(currentCard.category)) {
+                    categoriesStudied.push(currentCard.category);
+                    stats.categoriesStudied = categoriesStudied;
+                }
+            }
+            
+            const completedChallenge = gamificationManager.updateDailyStats(stats);
+            if (completedChallenge) {
+                showChallengeCompleteNotification(completedChallenge);
+            }
+            
+            // Check for achievements
+            const newAchievements = gamificationManager.checkAchievements();
+            newAchievements.forEach(achievement => {
+                showAchievementNotification(achievement);
+            });
+        }
     }
 
     updateDailyStudy() {
@@ -335,6 +412,11 @@ class FlashcardManager {
                 flashcardElement.classList.remove('mastered');
                 this.nextCard();
             }, 500);
+        }
+        
+        // Gamification: Award points for mastering a card
+        if (window.gamificationManager) {
+            gamificationManager.addPoints(5, 'Mastered flashcard');
         }
         
         this.updateMasteredStatus(card.id);
@@ -442,8 +524,8 @@ class FlashcardManager {
             
             filterContainer.innerHTML = html;
             
-            // Re-attach event listeners
-            this.initializeEventListeners();
+            // Only attach dynamic handlers for newly created elements
+            this.attachDynamicHandlers();
         }
     }
 
@@ -584,6 +666,40 @@ class FlashcardManager {
             }
         }
     }
+
+    // Cleanup method to remove all event listeners
+    cleanup() {
+        // Remove keyboard handler
+        if (this.keyboardHandler) {
+            document.removeEventListener('keydown', this.keyboardHandler);
+            this.keyboardHandler = null;
+        }
+
+        // Remove static handlers
+        const flipBtn = document.getElementById('flip-card');
+        const nextBtn = document.getElementById('next-card');
+        const prevBtn = document.getElementById('prev-card');
+        const flashcard = document.getElementById('flashcard');
+        const masterBtn = document.getElementById('master-card');
+
+        if (this.eventHandlers.flip) {
+            flipBtn?.removeEventListener('click', this.eventHandlers.flip);
+            flashcard?.removeEventListener('click', this.eventHandlers.flip);
+            flashcard?.removeEventListener('touchend', this.eventHandlers.flipTouch);
+        }
+        if (this.eventHandlers.next) {
+            nextBtn?.removeEventListener('click', this.eventHandlers.next);
+        }
+        if (this.eventHandlers.prev) {
+            prevBtn?.removeEventListener('click', this.eventHandlers.prev);
+        }
+        if (this.eventHandlers.master) {
+            masterBtn?.removeEventListener('click', this.eventHandlers.master);
+        }
+
+        // Clear handlers object
+        this.eventHandlers = {};
+    }
 }
 
 // Initialize flashcard manager when DOM is ready
@@ -595,8 +711,19 @@ document.addEventListener('DOMContentLoaded', () => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const flashcardsSection = document.getElementById('flashcards');
-                if (flashcardsSection && flashcardsSection.classList.contains('active') && !flashcardManager) {
-                    flashcardManager = new FlashcardManager();
+                if (flashcardsSection) {
+                    if (flashcardsSection.classList.contains('active')) {
+                        // Create manager if it doesn't exist
+                        if (!flashcardManager) {
+                            flashcardManager = new FlashcardManager();
+                        }
+                    } else {
+                        // Cleanup when section becomes inactive
+                        if (flashcardManager) {
+                            flashcardManager.cleanup();
+                            flashcardManager = null;
+                        }
+                    }
                 }
             }
         });

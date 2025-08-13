@@ -42,12 +42,19 @@ class App {
         window.addEventListener('popstate', (e) => {
             if (e.state && e.state.section) {
                 this.showSection(e.state.section);
+            } else {
+                // If no state, try to parse from URL hash
+                const hash = window.location.hash.slice(1) || 'home';
+                this.showSection(hash);
             }
         });
         
         // Set initial state
         const hash = window.location.hash.slice(1) || 'home';
-        this.navigateToSection(hash);
+        // Use showSection directly for initial load to avoid duplicate history entry
+        this.showSection(hash);
+        // Replace the current state to ensure proper back button behavior
+        history.replaceState({ section: hash }, '', `#${hash}`);
     }
 
     navigateToSection(section) {
@@ -56,6 +63,9 @@ class App {
     }
 
     showSection(section) {
+        // Cleanup previous section
+        this.cleanupPreviousSection();
+        
         // Hide all sections
         document.querySelectorAll('.content-section').forEach(s => {
             s.classList.remove('active');
@@ -79,12 +89,31 @@ class App {
             this.initializeSectionContent(section);
         }
     }
+    
+    cleanupPreviousSection() {
+        // Cleanup based on current section
+        switch(this.currentSection) {
+            case 'tests':
+                // Stop test timer if running
+                if (window.testManager && typeof testManager.cleanup === 'function') {
+                    testManager.cleanup();
+                }
+                break;
+            // Add other section cleanups as needed
+        }
+    }
 
     initializeSectionContent(section) {
         switch(section) {
             case 'flashcards':
-                // Flashcard manager is initialized via MutationObserver in flashcards.js
-                // This ensures it's properly initialized when the section becomes active
+                // Check if flashcard manager exists, initialize if not
+                // This handles direct navigation to #flashcards
+                if (!window.flashcardManager && section === 'flashcards') {
+                    // Check if FlashcardManager class is available
+                    if (typeof FlashcardManager !== 'undefined') {
+                        window.flashcardManager = new FlashcardManager();
+                    }
+                }
                 break;
             case 'tests':
                 if (!window.testManager) {
@@ -95,6 +124,10 @@ class App {
                 break;
             case 'scenarios':
                 // Scenarios are handled by scenarioManager in scenarios.js
+                // Initialize if needed (for direct navigation)
+                if (window.scenarioManager && typeof scenarioManager.initialize === 'function') {
+                    scenarioManager.initialize();
+                }
                 break;
             case 'progress':
                 this.updateProgressSection();
@@ -120,6 +153,9 @@ class App {
         
         // Calculate and display readiness score on dashboard
         this.updateDashboardReadiness();
+        
+        // Update gamification elements
+        this.updateGamificationDisplay();
     }
     
     updateDashboardReadiness() {
@@ -152,6 +188,14 @@ class App {
             this.updateDashboard();
             storage.endStudySession();
             storage.startStudySession();
+            
+            // Update study time for gamification
+            if (window.gamificationManager) {
+                const today = new Date().toDateString();
+                const dailyStats = gamificationManager.getData().dailyStats[today] || {};
+                dailyStats.studyTime = (dailyStats.studyTime || 0) + 60;
+                gamificationManager.updateDailyStats(dailyStats);
+            }
         }, 60000);
     }
 
@@ -337,5 +381,80 @@ function navigateToSection(section) {
 
 // Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.app = new App();
+    // Ensure all critical dependencies are loaded
+    const checkDependencies = () => {
+        const dependencies = {
+            'StorageManager': typeof StorageManager !== 'undefined',
+            'GamificationManager': typeof GamificationManager !== 'undefined',
+            'StorageMonitor': typeof StorageMonitor !== 'undefined'
+        };
+        
+        const allLoaded = Object.values(dependencies).every(loaded => loaded);
+        
+        if (!allLoaded) {
+            console.warn('Some dependencies not loaded yet:', dependencies);
+            // Retry after a short delay
+            setTimeout(checkDependencies, 100);
+            return;
+        }
+        
+        // All dependencies loaded, initialize app
+        window.app = new App();
+    };
+    
+    checkDependencies();
 });
+
+// Add gamification display update method
+App.prototype.updateGamificationDisplay = function() {
+    if (!window.gamificationManager) return;
+    
+    // Update level and points display with null checks
+    const levelInfo = gamificationManager.getLevel();
+    
+    const currentLevelEl = document.getElementById('current-level');
+    if (currentLevelEl) currentLevelEl.textContent = levelInfo.level;
+    
+    const levelNameEl = document.getElementById('level-name');
+    if (levelNameEl) levelNameEl.textContent = levelInfo.levelName;
+    
+    const totalPointsEl = document.getElementById('total-points');
+    if (totalPointsEl) totalPointsEl.textContent = levelInfo.points;
+    
+    const nextLevelPointsEl = document.getElementById('next-level-points');
+    if (nextLevelPointsEl) nextLevelPointsEl.textContent = levelInfo.nextLevelPoints;
+    
+    const levelProgressBarEl = document.getElementById('level-progress-bar');
+    if (levelProgressBarEl) levelProgressBarEl.style.width = `${levelInfo.progress}%`;
+    
+    // Update daily challenge
+    const dailyChallenge = gamificationManager.getTodayChallenge();
+    
+    const challengeNameEl = document.getElementById('challenge-name');
+    if (challengeNameEl) challengeNameEl.textContent = dailyChallenge.name;
+    
+    const challengeDescEl = document.getElementById('challenge-description');
+    if (challengeDescEl) challengeDescEl.textContent = dailyChallenge.description;
+    
+    const challengeProgressBarEl = document.getElementById('challenge-progress-bar');
+    if (challengeProgressBarEl) challengeProgressBarEl.style.width = `${dailyChallenge.progress}%`;
+    
+    const dailyChallengeEl = document.getElementById('daily-challenge');
+    if (dailyChallengeEl && dailyChallenge.completed) {
+        dailyChallengeEl.classList.add('completed');
+    }
+    
+    // Update achievements grid
+    const achievements = gamificationManager.getAllAchievements();
+    const achievementsGrid = document.getElementById('achievements-grid');
+    if (achievementsGrid) {
+        achievementsGrid.innerHTML = achievements.map(achievement => `
+            <div class="achievement-item ${achievement.unlocked ? 'unlocked' : ''}" 
+                 title="${achievement.description}">
+                <i class="fas ${achievement.icon} achievement-icon"></i>
+                <div class="achievement-name">${achievement.name}</div>
+                <small class="achievement-points">+${achievement.points} pts</small>
+            </div>
+        `).join('');
+    }
+};

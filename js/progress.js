@@ -9,7 +9,20 @@ class ProgressDashboard {
         
         this.updateMetrics();
         this.updateStreak();
-        this.updateCharts();
+        
+        // Only create charts if Chart.js is loaded
+        if (typeof Chart !== 'undefined') {
+            this.updateCharts();
+        } else {
+            console.warn('Chart.js not loaded yet, deferring chart creation');
+            // Retry after a delay
+            setTimeout(() => {
+                if (typeof Chart !== 'undefined') {
+                    this.updateCharts();
+                }
+            }, 1000);
+        }
+        
         this.generateRecommendations();
         this.createCalendarHeatmap();
         this.setupEventListeners();
@@ -36,11 +49,18 @@ class ProgressDashboard {
             testTypeStats[test.type].count++;
         });
         
-        // Display metrics
-        document.getElementById('metric-streak').textContent = `${stats.studyStreak} 🔥`;
-        document.getElementById('metric-questions').textContent = totalQuestions;
-        document.getElementById('metric-avg-score').textContent = this.calculateOverallAverage(testHistory) + '%';
-        document.getElementById('metric-cards-mastered').textContent = stats.cardsMastered;
+        // Display metrics with null checks
+        const metricStreakEl = document.getElementById('metric-streak');
+        if (metricStreakEl) metricStreakEl.textContent = `${stats.studyStreak} 🔥`;
+        
+        const metricQuestionsEl = document.getElementById('metric-questions');
+        if (metricQuestionsEl) metricQuestionsEl.textContent = totalQuestions;
+        
+        const metricAvgScoreEl = document.getElementById('metric-avg-score');
+        if (metricAvgScoreEl) metricAvgScoreEl.textContent = this.calculateOverallAverage(testHistory) + '%';
+        
+        const metricCardsMasteredEl = document.getElementById('metric-cards-mastered');
+        if (metricCardsMasteredEl) metricCardsMasteredEl.textContent = stats.cardsMastered;
         
         // Display average scores by test type
         this.displayTestTypeAverages(testTypeStats);
@@ -117,7 +137,13 @@ class ProgressDashboard {
 
     createScoreTrendChart() {
         const canvas = document.getElementById('score-trend-chart');
-        if (!canvas) return;
+        if (!canvas || !canvas.getContext) return;
+        
+        // Check if Chart.js is loaded
+        if (typeof Chart === 'undefined') {
+            console.warn('Chart.js is not loaded');
+            return;
+        }
 
         const testHistory = storage.getValue('testHistory') || [];
         const recentTests = testHistory.slice(-20); // Last 20 tests
@@ -171,7 +197,13 @@ class ProgressDashboard {
 
     createCategoryRadarChart() {
         const canvas = document.getElementById('category-radar-chart');
-        if (!canvas) return;
+        if (!canvas || !canvas.getContext) return;
+        
+        // Check if Chart.js is loaded
+        if (typeof Chart === 'undefined') {
+            console.warn('Chart.js is not loaded');
+            return;
+        }
 
         const testHistory = storage.getValue('testHistory') || [];
         const categoryStats = {};
@@ -652,6 +684,20 @@ class ProgressDashboard {
             importBtn.addEventListener('click', () => this.showImportDialog());
         }
     }
+    
+    // Cleanup method to destroy charts when leaving section
+    cleanup() {
+        // Destroy all charts to prevent memory leaks
+        if (this.charts.scoreTrend) {
+            this.charts.scoreTrend.destroy();
+            this.charts.scoreTrend = null;
+        }
+        if (this.charts.categoryRadar) {
+            this.charts.categoryRadar.destroy();
+            this.charts.categoryRadar = null;
+        }
+        this.initialized = false;
+    }
 }
 
 // Create global instance
@@ -663,8 +709,14 @@ document.addEventListener('DOMContentLoaded', () => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const progressSection = document.getElementById('progress');
-                if (progressSection && progressSection.classList.contains('active')) {
-                    progressDashboard.initialize();
+                if (progressSection) {
+                    if (progressSection.classList.contains('active')) {
+                        // Initialize charts when section becomes active
+                        progressDashboard.initialize();
+                    } else if (progressDashboard.initialized) {
+                        // Cleanup charts when section becomes inactive
+                        progressDashboard.cleanup();
+                    }
                 }
             }
         });

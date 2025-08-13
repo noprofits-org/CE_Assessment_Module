@@ -425,7 +425,9 @@ function showAchievementNotification(achievement) {
         </div>
     `;
     
-    document.body.appendChild(notification);
+    if (document.body) {
+        document.body.appendChild(notification);
+    }
     
     confetti({
         particleCount: 100,
@@ -454,7 +456,9 @@ function showLevelUpNotification(level, levelName) {
         </div>
     `;
     
-    document.body.appendChild(notification);
+    if (document.body) {
+        document.body.appendChild(notification);
+    }
     
     confetti({
         particleCount: 200,
@@ -484,7 +488,9 @@ function showChallengeCompleteNotification(challenge) {
         </div>
     `;
     
-    document.body.appendChild(notification);
+    if (document.body) {
+        document.body.appendChild(notification);
+    }
     
     confetti({
         particleCount: 50,

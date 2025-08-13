@@ -98,7 +98,7 @@ class TestManager {
                 const percentage = Math.round((viewedTestTerms.length / testRelevantTerms.length) * 100);
                 
                 const warningDiv = document.getElementById('readiness-warning');
-                if (percentage < 70 || readinessScore < 60) {
+                if (warningDiv && (percentage < 70 || readinessScore < 60)) {
                     // Calculate which categories need more study
                     const categoryStats = this.calculateCategoryReadiness(data.terms, viewData);
                     const weakCategories = Object.entries(categoryStats)
@@ -237,6 +237,12 @@ class TestManager {
     }
 
     startTest(type) {
+        // Clear any existing timer first
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.timer = null;
+        }
+        
         this.testType = type;
         this.currentQuestionIndex = 0;
         this.userAnswers = {};
@@ -591,6 +597,42 @@ class TestManager {
         
         // Update test statistics
         storage.recordTestScore(results.score, results.total, this.testType);
+        
+        // Gamification: Award points for completing test
+        if (window.gamificationManager) {
+            // Base points for completing a test
+            gamificationManager.addPoints(10, 'Completed test');
+            
+            // Bonus points for high scores
+            if (results.percentage === 100) {
+                gamificationManager.addPoints(15, 'Perfect test score');
+            } else if (results.percentage >= 90) {
+                gamificationManager.addPoints(10, 'Excellent test score');
+            } else if (results.percentage >= 80) {
+                gamificationManager.addPoints(5, 'Good test score');
+            }
+            
+            // Update daily stats for challenges
+            const stats = {
+                bestTestScore: results.percentage
+            };
+            
+            // Check for perfect category test
+            if (this.testMode === 'category' && results.percentage === 100) {
+                stats.perfectCategoryTest = true;
+            }
+            
+            const completedChallenge = gamificationManager.updateDailyStats(stats);
+            if (completedChallenge) {
+                showChallengeCompleteNotification(completedChallenge);
+            }
+            
+            // Check for achievements
+            const newAchievements = gamificationManager.checkAchievements();
+            newAchievements.forEach(achievement => {
+                showAchievementNotification(achievement);
+            });
+        }
     }
 
     showResults(results) {
@@ -701,7 +743,32 @@ class TestManager {
     startNewTest() {
         this.showTestSelection();
     }
+    
+    // Cleanup method to stop timer when leaving section
+    cleanup() {
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.timer = null;
+        }
+        // Reset timer display
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+            timerElement.classList.remove('text-danger');
+        }
+        // Hide test container if visible
+        const testContainer = document.getElementById('test-container');
+        if (testContainer) {
+            testContainer.style.display = 'none';
+        }
+    }
 }
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    if (window.testManager) {
+        testManager.cleanup();
+    }
+});
 
 // Global functions for onclick handlers
 function startTest(type) {

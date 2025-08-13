@@ -191,7 +191,8 @@ class ScenarioManager {
         
         // Track completion
         const completed = storage.getValue('scenarios.completed') || [];
-        if (!completed.includes(scenarioId)) {
+        const isNewCompletion = !completed.includes(scenarioId);
+        if (isNewCompletion) {
             completed.push(scenarioId);
             storage.updateData('scenarios.completed', completed);
         }
@@ -204,6 +205,37 @@ class ScenarioManager {
             dailyStudy[today].scenariosCompleted = (dailyStudy[today].scenariosCompleted || 0) + 1;
             dailyStudy[today].activityScore += 3;
             storage.updateData('dailyStudy', dailyStudy);
+        }
+        
+        // Gamification: Award points for completing scenarios
+        if (window.gamificationManager) {
+            // Points for answering
+            if (isCorrect) {
+                gamificationManager.addPoints(5, 'Correct scenario answer');
+            } else {
+                gamificationManager.addPoints(2, 'Scenario attempt');
+            }
+            
+            // Bonus for first-time completion
+            if (isNewCompletion) {
+                gamificationManager.addPoints(5, 'New scenario completed');
+            }
+            
+            // Update daily stats for challenges
+            const stats = {
+                scenariosCompleted: completed.length
+            };
+            
+            const completedChallenge = gamificationManager.updateDailyStats(stats);
+            if (completedChallenge) {
+                showChallengeCompleteNotification(completedChallenge);
+            }
+            
+            // Check for achievements
+            const newAchievements = gamificationManager.checkAchievements();
+            newAchievements.forEach(achievement => {
+                showAchievementNotification(achievement);
+            });
         }
     }
 

@@ -54,26 +54,78 @@ class StorageManager {
 
     saveData(data) {
         try {
-            localStorage.setItem(this.storageKey, JSON.stringify(data));
+            const jsonData = JSON.stringify(data);
+            localStorage.setItem(this.storageKey, jsonData);
         } catch (e) {
             console.error('Error saving data:', e);
+            
+            // Handle quota exceeded error
+            if (e.name === 'QuotaExceededError' || 
+                e.code === 22 || 
+                e.code === 1014 || 
+                (e.name === 'NS_ERROR_DOM_QUOTA_REACHED')) {
+                
+                // Notify user about storage issue
+                this.handleQuotaExceeded();
+                
+                // Try to clean up old data
+                try {
+                    this.cleanupOldData();
+                    // Retry saving after cleanup
+                    localStorage.setItem(this.storageKey, JSON.stringify(data));
+                } catch (retryError) {
+                    console.error('Failed to save even after cleanup:', retryError);
+                    // Show critical storage error to user
+                    this.showStorageError();
+                }
+            }
         }
     }
 
     updateData(path, value) {
-        const data = this.getData();
-        const keys = path.split('.');
-        let current = data;
-        
-        for (let i = 0; i < keys.length - 1; i++) {
-            if (!current[keys[i]]) {
-                current[keys[i]] = {};
+        try {
+            const data = this.getData();
+            const keys = path.split('.');
+            let current = data;
+            
+            // Ensure all parent objects exist
+            for (let i = 0; i < keys.length - 1; i++) {
+                if (!current[keys[i]] || typeof current[keys[i]] !== 'object') {
+                    current[keys[i]] = {};
+                }
+                current = current[keys[i]];
             }
-            current = current[keys[i]];
+            
+            // Set the final value
+            current[keys[keys.length - 1]] = value;
+            
+            // Save with error handling
+            this.saveData(data);
+        } catch (e) {
+            console.error('Error updating data at path:', path, e);
+            // Try to recover by reinitializing if data is corrupted
+            if (e.message.includes('Cannot read') || e.message.includes('undefined')) {
+                this.initializeStorage();
+                // Retry once after reinitialization
+                try {
+                    const data = this.getData();
+                    const keys = path.split('.');
+                    let current = data;
+                    
+                    for (let i = 0; i < keys.length - 1; i++) {
+                        if (!current[keys[i]]) {
+                            current[keys[i]] = {};
+                        }
+                        current = current[keys[i]];
+                    }
+                    
+                    current[keys[keys.length - 1]] = value;
+                    this.saveData(data);
+                } catch (retryError) {
+                    console.error('Failed to update data after reinitialization:', retryError);
+                }
+            }
         }
-        
-        current[keys[keys.length - 1]] = value;
-        this.saveData(data);
     }
 
     getValue(path) {
@@ -232,9 +284,11 @@ class StorageManager {
         const a = document.createElement('a');
         a.href = url;
         a.download = `ce_housing_assessor_backup_${new Date().toISOString().split('T')[0]}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        if (document.body) {
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
         URL.revokeObjectURL(url);
     }
 
@@ -303,6 +357,129 @@ class StorageManager {
             dailyStudy[today].activityScore += 2;
             this.updateData('dailyStudy', dailyStudy);
         }
+    }
+
+    // Handle quota exceeded error
+    handleQuotaExceeded() {
+        // Check if storage monitor is available
+        if (window.storageMonitor) {
+            // Show storage warning
+            const status = storageMonitor.checkStorageStatus();
+            
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-warning alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
+            notification.style.zIndex = '9999';
+            notification.innerHTML = `
+                <strong>Storage Full!</strong> Your browser storage is full. 
+                ${status.formattedSize} used of ${status.formattedMaxSize}.
+                <button type="button" class="btn btn-sm btn-warning ms-2" onclick="storageMonitor.showStorageUI()">
+                    Manage Storage
+                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            if (document.body) {
+                document.body.appendChild(notification);
+            }
+            
+            // Auto-dismiss after 10 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 10000);
+        }
+    }
+
+    // Clean up old data automatically
+    cleanupOldData() {
+        const data = this.getData();
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        
+        // Clean old test scores
+        if (data.tests && data.tests.scores) {
+            data.tests.scores = data.tests.scores.filter(score => {
+                return new Date(score.date) > thirtyDaysAgo;
+            });
+        }
+        
+        // Clean old daily study data
+        if (data.dailyStudy) {
+            const newDailyStudy = {};
+            Object.keys(data.dailyStudy).forEach(date => {
+                if (new Date(date) > thirtyDaysAgo) {
+                    newDailyStudy[date] = data.dailyStudy[date];
+                }
+            });
+            data.dailyStudy = newDailyStudy;
+        }
+        
+        // Clean old study dates
+        if (data.progress && data.progress.studyDates) {
+            data.progress.studyDates = data.progress.studyDates.filter(date => {
+                return new Date(date) > thirtyDaysAgo;
+            });
+        }
+        
+        // Save cleaned data (without recursive error handling)
+        try {
+            localStorage.setItem(this.storageKey, JSON.stringify(data));
+        } catch (e) {
+            // If still failing, we need more aggressive cleanup
+            throw e;
+        }
+    }
+
+    // Show critical storage error
+    showStorageError() {
+        const modal = document.createElement('div');
+        modal.className = 'modal fade show d-block';
+        modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+        modal.innerHTML = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">Critical Storage Error</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Unable to save your progress due to storage limitations.</p>
+                        <p>Please take one of the following actions:</p>
+                        <ul>
+                            <li>Export your data to save it externally</li>
+                            <li>Clear browser data for other sites</li>
+                            <li>Use a different browser with more storage</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="storage.exportAllData()">
+                            Export Data
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="this.closest('.modal').remove()">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        if (document.body) {
+            document.body.appendChild(modal);
+        }
+    }
+
+    // Export all data
+    exportAllData() {
+        const data = this.getData();
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ce-study-data-${new Date().toISOString().split('T')[0]}.json`;
+        if (document.body) {
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+        URL.revokeObjectURL(url);
     }
 }
 
