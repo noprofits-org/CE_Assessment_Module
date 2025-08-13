@@ -10,9 +10,14 @@
         "D": "Complete an HTT as they're eligible as an at-risk young adult"
       },
       "correct": "D",
-      "explanation": "Young adults (18-24) who are at risk of homelessness within 14 days are eligible for CE services.",
+      "explanation": "Young adults (18-24) who are at risk of homelessness within 14 days are eligible for CE services. See manual pages 4, 32, 42 for detailed information.",
       "category": "Eligibility",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        4,
+        32,
+        42
+      ]
     },
     {
       "id": "q_002",
@@ -24,9 +29,14 @@
         "D": "Verify income"
       },
       "correct": "C",
-      "explanation": "RAP staff should discuss diversion options and employment navigation before completing a triage tool to assess for options outside of CE.",
+      "explanation": "RAP staff should discuss diversion options and employment navigation before completing a triage tool to assess for options outside of CE. See manual pages 6, 7, 34 for detailed information.",
       "category": "Process",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        6,
+        7,
+        34
+      ]
     },
     {
       "id": "q_003",
@@ -38,9 +48,13 @@
         "D": "1 week"
       },
       "correct": "B",
-      "explanation": "Housing Assessors must complete all Housing Triage Tools in HMIS within 48 hours of when the information was first collected.",
+      "explanation": "Housing Assessors must complete all Housing Triage Tools in HMIS within 48 hours of when the information was first collected. See manual pages 20, 31 for detailed information.",
       "category": "Timeline",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        20,
+        31
+      ]
     },
     {
       "id": "q_004",
@@ -52,9 +66,14 @@
         "D": "Refer her to a different agency"
       },
       "correct": "B",
-      "explanation": "Personal information is not entered in HMIS for people fleeing DV. Enter as de-identified and send encrypted email to alex.ebrahimi@kcrha.org with subject 'De-Identified Household'.",
+      "explanation": "Personal information is not entered in HMIS for people fleeing DV. Enter as de-identified and send encrypted email to alex.ebrahimi@kcrha.org with subject 'De-Identified Household'. See manual pages 15, 16, 42 for detailed information.",
       "category": "HMIS",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        15,
+        16,
+        42
+      ]
     },
     {
       "id": "q_005",
@@ -66,9 +85,20 @@
         "D": "5 - one for each person"
       },
       "correct": "C",
-      "explanation": "Parents sign for minors under 18 (ages 16 and 8). The three adults (mom, dad, and 18-year-old) each sign for themselves.",
+      "explanation": "Parents sign for minors under 18 (ages 16 and 8). The three adults (mom, dad, and 18-year-old) each sign for themselves. See manual pages 7, 8, 9, 10, 11, 12, 13, 14, 15 for detailed information.",
       "category": "Documentation",
-      "difficulty": "Hard"
+      "difficulty": "Hard",
+      "studyPages": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
     },
     {
       "id": "q_006",
@@ -80,9 +110,13 @@
         "D": "Single adults living together"
       },
       "correct": "B",
-      "explanation": "For Coordinated Entry enrollments, only families with minor children at the time of assessment will be entered as a group.",
+      "explanation": "For Coordinated Entry enrollments, only families with minor children at the time of assessment will be entered as a group. See manual pages 16, 17 for detailed information.",
       "category": "HMIS",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        16,
+        17
+      ]
     },
     {
       "id": "q_007",
@@ -94,9 +128,14 @@
         "D": "Only if he's chronically homeless"
       },
       "correct": "B",
-      "explanation": "To be eligible after exiting an institution, the stay must be 90 days or less if they were homeless before entering. 4 months exceeds this limit.",
+      "explanation": "To be eligible after exiting an institution, the stay must be 90 days or less if they were homeless before entering. 4 months exceeds this limit. See manual pages 31, 32, 42 for detailed information.",
       "category": "Eligibility",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "q_008",
@@ -108,9 +147,13 @@
         "D": "24 assessments"
       },
       "correct": "C",
-      "explanation": "Housing Assessors must conduct at least 1 Housing Triage Tool per month or 12 assessments per year to maintain assessment access in HMIS.",
+      "explanation": "Housing Assessors must conduct at least 1 Housing Triage Tool per month or 12 assessments per year to maintain assessment access in HMIS. See manual pages 4, 26 for detailed information.",
       "category": "Training",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        4,
+        26
+      ]
     },
     {
       "id": "q_009",
@@ -122,9 +165,13 @@
         "D": "In the client's preferred agency"
       },
       "correct": "B",
-      "explanation": "All trained Housing Assessors must switch to the Coordinated Entry System Agency in HMIS for all Coordinated Entry related work.",
+      "explanation": "All trained Housing Assessors must switch to the Coordinated Entry System Agency in HMIS for all Coordinated Entry related work. See manual pages 16, 17 for detailed information.",
       "category": "HMIS",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        16,
+        17
+      ]
     },
     {
       "id": "q_010",
@@ -136,9 +183,20 @@
         "D": "Military ID"
       },
       "correct": "C",
-      "explanation": "Veterans should sign a Department of Veterans Affairs ROI so they can be discussed at the Veteran's By Name List Case Conferencing meeting.",
+      "explanation": "Veterans should sign a Department of Veterans Affairs ROI so they can be discussed at the Veteran's By Name List Case Conferencing meeting. See manual pages 7, 8, 9, 10, 11, 12, 13, 14, 15 for detailed information.",
       "category": "Documentation",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
     },
     {
       "id": "q_011",
@@ -150,9 +208,13 @@
         "D": "15 questions"
       },
       "correct": "A",
-      "explanation": "Coordinated Entry assessors will complete a two-question Housing Triage Tool.",
+      "explanation": "Coordinated Entry assessors will complete a two-question Housing Triage Tool. See manual pages 5, 20 for detailed information.",
       "category": "Process",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        5,
+        20
+      ]
     },
     {
       "id": "q_012",
@@ -164,9 +226,15 @@
         "D": "Only if he's a veteran"
       },
       "correct": "B",
-      "explanation": "Households that refuse consent can still receive services. They're entered as de-identified profiles with only a unique identifier number.",
+      "explanation": "Households that refuse consent can still receive services. They're entered as de-identified profiles with only a unique identifier number. See manual pages 8, 9, 15, 16 for detailed information.",
       "category": "Documentation",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        8,
+        9,
+        15,
+        16
+      ]
     },
     {
       "id": "q_013",
@@ -178,9 +246,12 @@
         "D": "10%"
       },
       "correct": "C",
-      "explanation": "CE Trainers must ensure assessor error rates stay under 5% through regular review of data quality reports and dashboards.",
+      "explanation": "CE Trainers must ensure assessor error rates stay under 5% through regular review of data quality reports and dashboards. See manual pages 3 for detailed information.",
       "category": "Training",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        3
+      ]
     },
     {
       "id": "q_014",
@@ -192,9 +263,12 @@
         "D": "Create a de-identified profile"
       },
       "correct": "C",
-      "explanation": "Unaccompanied minors (under 18 without parent/guardian) are NOT eligible for CE services independently.",
+      "explanation": "Unaccompanied minors (under 18 without parent/guardian) are NOT eligible for CE services independently. See manual pages 44 for detailed information.",
       "category": "Eligibility",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        44
+      ]
     },
     {
       "id": "q_015",
@@ -206,9 +280,12 @@
         "D": "Only when housing status changes"
       },
       "correct": "C",
-      "explanation": "Create a new CLS assessment at enrollment start and each time you provide a coordinated entry service, start a new HTT, or update an existing HTT.",
+      "explanation": "Create a new CLS assessment at enrollment start and each time you provide a coordinated entry service, start a new HTT, or update an existing HTT. See manual pages 19 for detailed information.",
       "category": "HMIS",
-      "difficulty": "Hard"
+      "difficulty": "Hard",
+      "studyPages": [
+        19
+      ]
     },
     {
       "id": "q_016",
@@ -220,9 +297,13 @@
         "D": "Any homelessness with disability"
       },
       "correct": "B",
-      "explanation": "An individual is chronically homeless if homeless for 12 consecutive months+, or 4+ occasions totaling 12 months over 3 years, with a documented disability.",
+      "explanation": "An individual is chronically homeless if homeless for 12 consecutive months+, or 4+ occasions totaling 12 months over 3 years, with a documented disability. See manual pages 27, 32 for detailed information.",
       "category": "Eligibility",
-      "difficulty": "Hard"
+      "difficulty": "Hard",
+      "studyPages": [
+        27,
+        32
+      ]
     },
     {
       "id": "q_017",
@@ -234,9 +315,12 @@
         "D": "It requires manager approval"
       },
       "correct": "B",
-      "explanation": "Never select 'Private' in any part of HMIS. If made private, CE staff won't be able to see information and the household will never be referred to housing.",
+      "explanation": "Never select 'Private' in any part of HMIS. If made private, CE staff won't be able to see information and the household will never be referred to housing. See manual pages 21 for detailed information.",
       "category": "HMIS",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        21
+      ]
     },
     {
       "id": "q_018",
@@ -248,9 +332,12 @@
         "D": "7 years"
       },
       "correct": "D",
-      "explanation": "The End Date will default to seven years from the start date. This is the correct default date for King County.",
+      "explanation": "The End Date will default to seven years from the start date. This is the correct default date for King County. See manual pages 9 for detailed information.",
       "category": "Documentation",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        9
+      ]
     },
     {
       "id": "q_019",
@@ -262,9 +349,13 @@
         "D": "Only consenting members"
       },
       "correct": "C",
-      "explanation": "Services only need to be entered for the Head of Household.",
+      "explanation": "Services only need to be entered for the Head of Household. See manual pages 16, 17 for detailed information.",
       "category": "HMIS",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        16,
+        17
+      ]
     },
     {
       "id": "q_020",
@@ -276,9 +367,14 @@
         "D": "Length of homelessness only"
       },
       "correct": "B",
-      "explanation": "Since October 2020, CE prioritizes households based on COVID-19 disproportionate impact factors determined by Seattle King County Public Health.",
+      "explanation": "Since October 2020, CE prioritizes households based on COVID-19 disproportionate impact factors determined by Seattle King County Public Health. See manual pages 5, 36, 44 for detailed information.",
       "category": "Process",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        5,
+        36,
+        44
+      ]
     },
     {
       "id": "q_021",
@@ -290,9 +386,13 @@
         "D": "VAWA training"
       },
       "correct": "B",
-      "explanation": "All Clarity Human Services (HMIS) users must complete Clarity General Training before being granted database access.",
+      "explanation": "All Clarity Human Services (HMIS) users must complete Clarity General Training before being granted database access. See manual pages 5, 48 for detailed information.",
       "category": "Training",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        5,
+        48
+      ]
     },
     {
       "id": "q_022",
@@ -304,9 +404,13 @@
         "D": "Only if their situation changed"
       },
       "correct": "C",
-      "explanation": "Households with a Housing Triage Tool or VI-SPDAT completed prior to the change don't need to complete a new HTT.",
+      "explanation": "Households with a Housing Triage Tool or VI-SPDAT completed prior to the change don't need to complete a new HTT. See manual pages 5, 20 for detailed information.",
       "category": "Process",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        5,
+        20
+      ]
     },
     {
       "id": "q_023",
@@ -318,9 +422,13 @@
         "D": "120 days"
       },
       "correct": "C",
-      "explanation": "Diversion has 30 days to complete services, with a minimum duration of 90 days for the diversion period.",
+      "explanation": "Diversion has 30 days to complete services, with a minimum duration of 90 days for the diversion period. See manual pages 4, 35 for detailed information.",
       "category": "Timeline",
-      "difficulty": "Hard"
+      "difficulty": "Hard",
+      "studyPages": [
+        4,
+        35
+      ]
     },
     {
       "id": "q_024",
@@ -332,9 +440,12 @@
         "D": "DSHS"
       },
       "correct": "B",
-      "explanation": "King County Regional Homelessness Authority (KCRHA) is the Coordinating Entity for CE.",
+      "explanation": "King County Regional Homelessness Authority (KCRHA) is the Coordinating Entity for CE. See manual pages 4 for detailed information.",
       "category": "Process",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        4
+      ]
     },
     {
       "id": "q_025",
@@ -346,9 +457,13 @@
         "D": "As a family unit"
       },
       "correct": "B",
-      "explanation": "Single adults and couples without children receive individual enrollments. Only families with minor children use group enrollments.",
+      "explanation": "Single adults and couples without children receive individual enrollments. Only families with minor children use group enrollments. See manual pages 16, 17 for detailed information.",
       "category": "HMIS",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        16,
+        17
+      ]
     },
     {
       "id": "q_026",
@@ -360,9 +475,13 @@
         "D": "206-501-2233"
       },
       "correct": "B",
-      "explanation": "Contact Bitfocus helpdesk at (206) 444-4001 ext. 2 for HMIS/Clarity support and new user accounts.",
+      "explanation": "Contact Bitfocus helpdesk at (206) 444-4001 ext. 2 for HMIS/Clarity support and new user accounts. See manual pages 5, 48 for detailed information.",
       "category": "HMIS",
-      "difficulty": "Hard"
+      "difficulty": "Hard",
+      "studyPages": [
+        5,
+        48
+      ]
     },
     {
       "id": "q_027",
@@ -374,9 +493,12 @@
         "D": "Only when policies change"
       },
       "correct": "B",
-      "explanation": "All Housing Assessors must attend at least one Assessor Refresher training in a 12-month period.",
+      "explanation": "All Housing Assessors must attend at least one Assessor Refresher training in a 12-month period. See manual pages 6 for detailed information.",
       "category": "Training",
-      "difficulty": "Easy"
+      "difficulty": "Easy",
+      "studyPages": [
+        6
+      ]
     },
     {
       "id": "q_028",
@@ -388,9 +510,20 @@
         "D": "Save, Apply, Sign"
       },
       "correct": "C",
-      "explanation": "For electronic ROI: have client sign, click Apply, then Save, then Add Record to complete the process.",
+      "explanation": "For electronic ROI: have client sign, click Apply, then Save, then Add Record to complete the process. See manual pages 7, 8, 9, 10, 11, 12, 13, 14, 15 for detailed information.",
       "category": "Documentation",
-      "difficulty": "Hard"
+      "difficulty": "Hard",
+      "studyPages": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
     },
     {
       "id": "q_029",
@@ -402,9 +535,13 @@
         "D": "They go to bottom of list"
       },
       "correct": "B",
-      "explanation": "Households with existing HTTs remain potentially eligible for prioritization as long as they remain active in the CE System Agency Program.",
+      "explanation": "Households with existing HTTs remain potentially eligible for prioritization as long as they remain active in the CE System Agency Program. See manual pages 16, 17 for detailed information.",
       "category": "Process",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        16,
+        17
+      ]
     },
     {
       "id": "q_030",
@@ -416,9 +553,20 @@
         "D": "VA benefits letter"
       },
       "correct": "B",
-      "explanation": "Veterans who sign a Department of Veterans Affairs ROI can be discussed at the Veteran's By Name List Case Conferencing meeting.",
+      "explanation": "Veterans who sign a Department of Veterans Affairs ROI can be discussed at the Veteran's By Name List Case Conferencing meeting. See manual pages 7, 8, 9, 10, 11, 12, 13, 14, 15 for detailed information.",
       "category": "Documentation",
-      "difficulty": "Medium"
+      "difficulty": "Medium",
+      "studyPages": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
     }
   ]
 }

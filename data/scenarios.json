@@ -12,9 +12,16 @@
         "D": "Provide emergency shelter without assessment"
       },
       "correct": "B",
-      "explanation": "Unaccompanied minors under 18 are not eligible for CE and must be referred to appropriate youth services or Child Protective Services.",
-      "relatedConcepts": ["Unaccompanied Minor", "Eligibility", "RAP Process"],
-      "difficulty": "medium"
+      "explanation": "Unaccompanied minors under 18 are not eligible for CE and must be referred to appropriate youth services or Child Protective Services. See manual pages 44 for detailed information.",
+      "relatedConcepts": [
+        "Unaccompanied Minor",
+        "Eligibility",
+        "RAP Process"
+      ],
+      "difficulty": "medium",
+      "studyPages": [
+        44
+      ]
     },
     {
       "id": "s_002",
@@ -28,9 +35,18 @@
         "D": "Yes, but only after they actually leave the relative's home"
       },
       "correct": "B",
-      "explanation": "Families doubled up with relatives are not considered literally homeless under HUD's definition. They would need to be in a place not meant for human habitation, emergency shelter, or transitional housing to be eligible.",
-      "relatedConcepts": ["HUD Definition", "Literally Homeless", "Doubled Up"],
-      "difficulty": "medium"
+      "explanation": "Families doubled up with relatives are not considered literally homeless under HUD's definition. They would need to be in a place not meant for human habitation, emergency shelter, or transitional housing to be eligible. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "HUD Definition",
+        "Literally Homeless",
+        "Doubled Up"
+      ],
+      "difficulty": "medium",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_003",
@@ -44,9 +60,18 @@
         "D": "Only if they've been there more than 14 days"
       },
       "correct": "B",
-      "explanation": "A car, even if operational, is considered a place not meant for human habitation. This person meets the HUD definition of literal homelessness.",
-      "relatedConcepts": ["Place Not Meant for Human Habitation", "Literally Homeless", "Vehicle"],
-      "difficulty": "easy"
+      "explanation": "A car, even if operational, is considered a place not meant for human habitation. This person meets the HUD definition of literal homelessness. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Place Not Meant for Human Habitation",
+        "Literally Homeless",
+        "Vehicle"
+      ],
+      "difficulty": "easy",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_004",
@@ -60,9 +85,18 @@
         "D": "Only after 7 days on the street"
       },
       "correct": "C",
-      "explanation": "The person is currently literally homeless as they have no place to go. Previous institutional stays don't disqualify someone if they are currently experiencing literal homelessness.",
-      "relatedConcepts": ["Institutional Stay", "Literally Homeless", "Eligibility"],
-      "difficulty": "medium"
+      "explanation": "The person is currently literally homeless as they have no place to go. Previous institutional stays don't disqualify someone if they are currently experiencing literal homelessness. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Institutional Stay",
+        "Literally Homeless",
+        "Eligibility"
+      ],
+      "difficulty": "medium",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_005",
@@ -76,9 +110,18 @@
         "D": "She is not eligible until the baby is born"
       },
       "correct": "C",
-      "explanation": "A pregnant individual without children present is assessed as a single adult, but pregnancy should be noted as a vulnerability factor that may affect prioritization.",
-      "relatedConcepts": ["Vulnerability", "Single Adult", "Prioritization"],
-      "difficulty": "hard"
+      "explanation": "A pregnant individual without children present is assessed as a single adult, but pregnancy should be noted as a vulnerability factor that may affect prioritization. See manual pages 5, 36, 44 for detailed information.",
+      "relatedConcepts": [
+        "Vulnerability",
+        "Single Adult",
+        "Prioritization"
+      ],
+      "difficulty": "hard",
+      "studyPages": [
+        5,
+        36,
+        44
+      ]
     },
     {
       "id": "s_006",
@@ -92,9 +135,20 @@
         "D": "Must wait until they leave the friend's place"
       },
       "correct": "B",
-      "explanation": "While fleeing DV, they are currently staying with a friend and are not literally homeless. They would become eligible once they have no safe housing option.",
-      "relatedConcepts": ["Domestic Violence", "Literally Homeless", "Temporary Accommodation"],
-      "difficulty": "hard"
+      "explanation": "While fleeing DV, they are currently staying with a friend and are not literally homeless. They would become eligible once they have no safe housing option. See manual pages 15, 16, 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Domestic Violence",
+        "Literally Homeless",
+        "Temporary Accommodation"
+      ],
+      "difficulty": "hard",
+      "studyPages": [
+        15,
+        16,
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_007",
@@ -107,10 +161,19 @@
         "C": "Yes, but only for prevention services",
         "D": "Only if they have proof of eviction"
       },
-      "correct": "B",
-      "explanation": "CE assessment is for those who are literally homeless. Someone facing eviction but still housed would need to be referred to prevention services, not CE.",
-      "relatedConcepts": ["Prevention", "Literally Homeless", "At Risk"],
-      "difficulty": "medium"
+      "correct": "A",
+      "explanation": "Young adults (18-24) who are at risk of homelessness within 14 days ARE eligible for CE assessment. This is a special provision for this age group to help prevent them from becoming literally homeless. See manual pages 4, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Prevention",
+        "Literally Homeless",
+        "At Risk"
+      ],
+      "difficulty": "medium",
+      "studyPages": [
+        4,
+        32,
+        42
+      ]
     },
     {
       "id": "s_008",
@@ -124,9 +187,18 @@
         "D": "Veterans use a separate system"
       },
       "correct": "B",
-      "explanation": "Residents of transitional housing programs are considered literally homeless under HUD's definition and are eligible for CE assessment.",
-      "relatedConcepts": ["Transitional Housing", "HUD Definition", "Veteran"],
-      "difficulty": "easy"
+      "explanation": "Residents of transitional housing programs are considered literally homeless under HUD's definition and are eligible for CE assessment. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Transitional Housing",
+        "HUD Definition",
+        "Veteran"
+      ],
+      "difficulty": "easy",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_009",
@@ -140,9 +212,18 @@
         "D": "Provide shelter bed to prevent discharge to street"
       },
       "correct": "B",
-      "explanation": "The patient needs to be literally homeless to be assessed. They should be referred to come to the RAP after discharge, or staff can do outreach if appropriate.",
-      "relatedConcepts": ["Discharge Planning", "Literally Homeless", "RAP Process"],
-      "difficulty": "medium"
+      "explanation": "The patient needs to be literally homeless to be assessed. They should be referred to come to the RAP after discharge, or staff can do outreach if appropriate. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Discharge Planning",
+        "Literally Homeless",
+        "RAP Process"
+      ],
+      "difficulty": "medium",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_010",
@@ -156,9 +237,18 @@
         "D": "Depends on the weather conditions"
       },
       "correct": "B",
-      "explanation": "Camping in parks, even with equipment, constitutes living in a place not meant for human habitation and meets the definition of literal homelessness.",
-      "relatedConcepts": ["Place Not Meant for Human Habitation", "Literally Homeless", "Unsheltered"],
-      "difficulty": "easy"
+      "explanation": "Camping in parks, even with equipment, constitutes living in a place not meant for human habitation and meets the definition of literal homelessness. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Place Not Meant for Human Habitation",
+        "Literally Homeless",
+        "Unsheltered"
+      ],
+      "difficulty": "easy",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_011",
@@ -172,9 +262,18 @@
         "D": "Must be assessed before voucher ends"
       },
       "correct": "B",
-      "explanation": "Motel stays paid by non-profit organizations are considered housed situations. They would become eligible once they no longer have the motel option.",
-      "relatedConcepts": ["Temporary Accommodation", "Third-Party Payment", "Housed Status"],
-      "difficulty": "hard"
+      "explanation": "Motel stays paid by non-profit organizations are considered housed situations. They would become eligible once they no longer have the motel option. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Temporary Accommodation",
+        "Third-Party Payment",
+        "Housed Status"
+      ],
+      "difficulty": "hard",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_012",
@@ -188,9 +287,18 @@
         "D": "Need verification from treatment center"
       },
       "correct": "C",
-      "explanation": "They are currently literally homeless (slept outside). Recent stays in treatment don't affect eligibility if the person is currently experiencing literal homelessness.",
-      "relatedConcepts": ["Treatment Facility", "Literally Homeless", "Institutional Stay"],
-      "difficulty": "medium"
+      "explanation": "They are currently literally homeless (slept outside). Recent stays in treatment don't affect eligibility if the person is currently experiencing literal homelessness. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Treatment Facility",
+        "Literally Homeless",
+        "Institutional Stay"
+      ],
+      "difficulty": "medium",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_013",
@@ -204,9 +312,18 @@
         "D": "Homeless only if RV lacks utilities"
       },
       "correct": "B",
-      "explanation": "Living in an RV with permission on private property is considered a housed situation. They would need to be living in the RV in a place not meant for habitation to be considered homeless.",
-      "relatedConcepts": ["RV", "Permission to Stay", "Housed Status"],
-      "difficulty": "hard"
+      "explanation": "Living in an RV with permission on private property is considered a housed situation. They would need to be living in the RV in a place not meant for habitation to be considered homeless. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "RV",
+        "Permission to Stay",
+        "Housed Status"
+      ],
+      "difficulty": "hard",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_014",
@@ -220,9 +337,18 @@
         "D": "Too old for youth-specific programs only"
       },
       "correct": "B",
-      "explanation": "They are eligible because they're currently unsheltered (laundromat). Foster care history may be relevant for prioritization but doesn't determine eligibility.",
-      "relatedConcepts": ["Foster Care", "Unsheltered", "Transition Age Youth"],
-      "difficulty": "medium"
+      "explanation": "They are eligible because they're currently unsheltered (laundromat). Foster care history may be relevant for prioritization but doesn't determine eligibility. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Foster Care",
+        "Unsheltered",
+        "Transition Age Youth"
+      ],
+      "difficulty": "medium",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     },
     {
       "id": "s_015",
@@ -236,9 +362,18 @@
         "D": "Wait 7 days to see if they stay in shelter"
       },
       "correct": "B",
-      "explanation": "CE assessment should be completed regardless of emergency shelter entry. CE is about assessing for appropriate housing interventions, not just emergency shelter.",
-      "relatedConcepts": ["Emergency Shelter", "CE Assessment", "Housing Planning"],
-      "difficulty": "medium"
+      "explanation": "CE assessment should be completed regardless of emergency shelter entry. CE is about assessing for appropriate housing interventions, not just emergency shelter. See manual pages 5, 6, 20 for detailed information.",
+      "relatedConcepts": [
+        "Emergency Shelter",
+        "CE Assessment",
+        "Housing Planning"
+      ],
+      "difficulty": "medium",
+      "studyPages": [
+        5,
+        6,
+        20
+      ]
     },
     {
       "id": "s_016",
@@ -252,9 +387,18 @@
         "D": "Must prove they can't return home"
       },
       "correct": "B",
-      "explanation": "They are literally homeless as they're living in a vehicle. Previous housing tied to employment doesn't affect current eligibility if they're now unsheltered.",
-      "relatedConcepts": ["Seasonal Employment", "Vehicle", "Literally Homeless"],
-      "difficulty": "easy"
+      "explanation": "They are literally homeless as they're living in a vehicle. Previous housing tied to employment doesn't affect current eligibility if they're now unsheltered. See manual pages 31, 32, 42 for detailed information.",
+      "relatedConcepts": [
+        "Seasonal Employment",
+        "Vehicle",
+        "Literally Homeless"
+      ],
+      "difficulty": "easy",
+      "studyPages": [
+        31,
+        32,
+        42
+      ]
     }
   ]
 }
