@@ -1,0 +1,325 @@
+{
+  "categories": ["Eligibility", "Process", "HMIS", "Housing Types", "Documentation", "Training", "Timeline"],
+  "terms": [
+    {
+      "id": "term_001",
+      "term": "Literal Homelessness",
+      "definition": "Living in emergency shelter, transitional housing, or places not meant for habitation (streets, cars, parks, abandoned buildings)",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["eligible", "definition", "homeless"]
+    },
+    {
+      "id": "term_002",
+      "term": "9 Steps of CE Assessment",
+      "definition": "1. Introduction 2. Discuss opportunity for Diversion Problem-Solving services 3. Client Consent to Data Collection and ROI 4. Switch to Coordinated Entry System Agency 5. Create a Coordinated Entry System Agency Program Enrollment 6. Provide Coordinated Entry Services 7. Create a Current Living Situation Assessment 8. Create a Housing Triage Tool Assessment 9. Enter Contact and Location Information for Each Household Member",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["steps", "process", "assessment"]
+    },
+    {
+      "id": "term_003",
+      "term": "Diversion Timeline",
+      "definition": "30 days to complete diversion services, with a minimum duration of 90 days for the diversion period",
+      "category": "Timeline",
+      "testRelevant": true,
+      "keywords": ["diversion", "timeline", "30 days", "90 days"]
+    },
+    {
+      "id": "term_004",
+      "term": "Assessment Timeline",
+      "definition": "Housing Triage Tool (HTT) must be entered in HMIS within 48 hours of when the information was first collected",
+      "category": "Timeline",
+      "testRelevant": true,
+      "keywords": ["48 hours", "HTT", "HMIS", "deadline"]
+    },
+    {
+      "id": "term_005",
+      "term": "Institutional Stay Limit",
+      "definition": "90 days or less - the maximum time someone can stay in an institution (jail, hospital, treatment facility) and still maintain literal homelessness status if they were homeless before entering",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["90 days", "institution", "eligibility"]
+    },
+    {
+      "id": "term_006",
+      "term": "Young Adult At-Risk Period",
+      "definition": "Young adults (18-24 years old) who are at risk of homelessness within 14 days are eligible for CE services",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["14 days", "young adult", "at-risk"]
+    },
+    {
+      "id": "term_007",
+      "term": "Unaccompanied Minor",
+      "definition": "A person under 18 years old without a parent or guardian present - NOT eligible for CE services independently",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["under 18", "minor", "ineligible"]
+    },
+    {
+      "id": "term_008",
+      "term": "Group Enrollment",
+      "definition": "In CE, used only for families with minor children. Single adults and couples without children receive individual enrollments",
+      "category": "HMIS",
+      "testRelevant": true,
+      "keywords": ["families", "minor children", "enrollment"]
+    },
+    {
+      "id": "term_009",
+      "term": "Assessor Activity Requirement",
+      "definition": "Housing Assessors must conduct minimum 1 assessment per month or 12 assessments per year to maintain HMIS access",
+      "category": "Training",
+      "testRelevant": true,
+      "keywords": ["12 per year", "minimum", "requirement"]
+    },
+    {
+      "id": "term_010",
+      "term": "Data Quality Standard",
+      "definition": "CE Trainers must ensure assessor error rate stays under 5% through regular review of data quality reports and dashboards",
+      "category": "Training",
+      "testRelevant": true,
+      "keywords": ["5%", "error rate", "quality"]
+    },
+    {
+      "id": "term_011",
+      "term": "Coordinated Entry (CE)",
+      "definition": "A system designed to ensure people experiencing homelessness have fair and equal access to available housing resources by matching needs, strengths, and vulnerabilities with appropriate housing resources and service assistance",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["system", "fair access", "matching"]
+    },
+    {
+      "id": "term_012",
+      "term": "Housing Triage Tool (HTT)",
+      "definition": "A two-question assessment tool used in HMIS labeled as Seattle/King County Coordinated Entry-Housing Triage Tool that helps prioritize households for housing resources based on vulnerability",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["two-question", "assessment", "prioritize"]
+    },
+    {
+      "id": "term_013",
+      "term": "Regional Access Points (RAPs)",
+      "definition": "Designated agencies responsible for ensuring households experiencing homelessness have prompt access to services including Diversion, employment connections, and CE Housing Triage Tool completion",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["RAP", "access", "services"]
+    },
+    {
+      "id": "term_014",
+      "term": "HMIS",
+      "definition": "Homeless Management Information System - A database where housing assessors enter client information, assessments, and track services provided to households experiencing homelessness",
+      "category": "HMIS",
+      "testRelevant": true,
+      "keywords": ["database", "information", "system"]
+    },
+    {
+      "id": "term_015",
+      "term": "Diversion/Problem-Solving",
+      "definition": "Services that help households identify immediate temporary or permanent housing solutions outside of the homeless services system through effective participant-focused conversations using open-ended questions, motivational interviewing, and trauma-informed care",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["alternative", "solutions", "conversation"]
+    },
+    {
+      "id": "term_016",
+      "term": "CE Trainer",
+      "definition": "Staff role responsible for communication between CE and partner agencies, ensuring on-site training completion, monitoring data quality issues (keeping errors under 5%), and maintaining assessor compliance with training requirements",
+      "category": "Training",
+      "testRelevant": true,
+      "keywords": ["trainer", "quality", "compliance"]
+    },
+    {
+      "id": "term_017",
+      "term": "Housing Assessor",
+      "definition": "Trained staff responsible for completing CE Housing Triage Tools, entering information into HMIS within 48 hours, exploring diversion options, and connecting households with housing navigators as needed",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["assessor", "HTT", "staff"]
+    },
+    {
+      "id": "term_018",
+      "term": "KCRHA",
+      "definition": "King County Regional Homelessness Authority - The Coordinating Entity responsible for oversight and direction of Coordinated Entry in King County",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["authority", "coordinating entity", "oversight"]
+    },
+    {
+      "id": "term_019",
+      "term": "ROI (Release of Information)",
+      "definition": "A consent form that households sign allowing their information to be collected and shared with Partner Agencies through HMIS for housing and services coordination. Expires after 7 years in King County",
+      "category": "Documentation",
+      "testRelevant": true,
+      "keywords": ["consent", "release", "7 years"]
+    },
+    {
+      "id": "term_020",
+      "term": "De-identified Profile",
+      "definition": "A profile created in HMIS without identifying information for households who refuse consent or are fleeing domestic violence, assigned only a unique identifier number. Info sent via encrypted email to CE",
+      "category": "HMIS",
+      "testRelevant": true,
+      "keywords": ["refused", "anonymous", "DV"]
+    },
+    {
+      "id": "term_021",
+      "term": "Progressive Engagement",
+      "definition": "An approach that starts with lighter interventions like diversion and employment services before moving to more intensive housing interventions based on household needs",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["lighter", "intensive", "progression"]
+    },
+    {
+      "id": "term_022",
+      "term": "Current Living Situation (CLS)",
+      "definition": "An assessment in HMIS that documents where a household is currently staying, created at enrollment start and updated with each CE service or HTT update",
+      "category": "HMIS",
+      "testRelevant": true,
+      "keywords": ["CLS", "living", "update"]
+    },
+    {
+      "id": "term_023",
+      "term": "Chronic Homelessness",
+      "definition": "Being homeless for 12 consecutive months or more, OR 4 or more occasions totaling at least 12 months over the past 3 years, with a documented disability",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["12 months", "chronic", "disability"]
+    },
+    {
+      "id": "term_024",
+      "term": "Housing Navigation",
+      "definition": "Services that assist households in navigating the housing process from referral to lease-up, including obtaining documentation (ID, SSN, income verification, disability evidence), addressing application challenges, and case conferencing",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["navigation", "documentation", "lease-up"]
+    },
+    {
+      "id": "term_025",
+      "term": "Coordinated Entry System Agency",
+      "definition": "A specific agency in HMIS where all CE assessments and related services must be entered, separate from an assessor's home agency, accessed via dropdown menu under username",
+      "category": "HMIS",
+      "testRelevant": true,
+      "keywords": ["system agency", "dropdown", "switch"]
+    },
+    {
+      "id": "term_026",
+      "term": "VAWA",
+      "definition": "Violence Against Women Act - Provides protections for survivors of domestic violence, with special protocols in CE including de-identified entry and confidential services",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["violence", "DV", "protection"]
+    },
+    {
+      "id": "term_027",
+      "term": "By Name List",
+      "definition": "A real-time list of all known households experiencing homelessness, used in case conferencing meetings to coordinate housing placements and services, especially for Veterans who sign VA ROI",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["list", "veterans", "conferencing"]
+    },
+    {
+      "id": "term_028",
+      "term": "Housing First",
+      "definition": "An approach incorporated in CE that prioritizes moving people quickly into permanent housing without preconditions, then providing supportive services as needed",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["quickly", "permanent", "preconditions"]
+    },
+    {
+      "id": "term_029",
+      "term": "Clarity Human Services",
+      "definition": "The HMIS software platform used in King County that requires general training before users can access the database and enter CE assessments. Contact Bitfocus Helpdesk at 206-444-4001 x2",
+      "category": "HMIS",
+      "testRelevant": true,
+      "keywords": ["clarity", "software", "training"]
+    },
+    {
+      "id": "term_030",
+      "term": "Priority Pool",
+      "definition": "The group of households who have been prioritized by CE for housing resources based on vulnerability factors and COVID-19 disproportionate impact considerations as determined by Seattle King County Public Health",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["prioritized", "COVID-19", "vulnerability"]
+    },
+    {
+      "id": "term_031",
+      "term": "Young Adult",
+      "definition": "In CE context, a person between 18 and 24 years old who can access CE services if experiencing homelessness or at risk of homelessness within 14 days",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["18-24", "youth", "14 days"]
+    },
+    {
+      "id": "term_032",
+      "term": "Head of Household (HOH)",
+      "definition": "The primary adult in a household who serves as the main contact and for whom the primary CE enrollment and services are documented in HMIS. Services only entered for HOH",
+      "category": "HMIS",
+      "testRelevant": true,
+      "keywords": ["HOH", "primary", "services"]
+    },
+    {
+      "id": "term_033",
+      "term": "VI-SPDAT",
+      "definition": "Vulnerability Index - Service Prioritization Decision Assistance Tool, a previous assessment tool that households don't need to retake if they already have one completed",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["previous", "vulnerability", "retake"]
+    },
+    {
+      "id": "term_034",
+      "term": "YFHPI/BSK",
+      "definition": "Youth and Family Homelessness Prevention Initiative (also known as Best Starts for Kids) - A prevention resource that should be discussed with households before completing HTT",
+      "category": "Housing Types",
+      "testRelevant": true,
+      "keywords": ["prevention", "youth", "BSK"]
+    },
+    {
+      "id": "term_035",
+      "term": "Assessor Refresher Training",
+      "definition": "Required training that all Housing Assessors must attend at least once per 12-month period to maintain their access to complete Housing Triage Tools in HMIS",
+      "category": "Training",
+      "testRelevant": true,
+      "keywords": ["refresher", "annual", "required"]
+    },
+    {
+      "id": "term_036",
+      "term": "COVID-19 Prioritization",
+      "definition": "Since October 2020, CE prioritizes Families, Single Adults, and Young Adults most disproportionately impacted by COVID-19 using factors determined by Seattle King County Public Health",
+      "category": "Process",
+      "testRelevant": true,
+      "keywords": ["COVID", "October 2020", "prioritization"]
+    },
+    {
+      "id": "term_037",
+      "term": "Electronic Signature",
+      "definition": "Method for signing HMIS ROI directly in the system using touchscreen or mouse. Must click 'Apply' then 'Save' then 'Add Record' to complete the process",
+      "category": "Documentation",
+      "testRelevant": true,
+      "keywords": ["e-sign", "apply", "save"]
+    },
+    {
+      "id": "term_038",
+      "term": "Private Toggle Warning",
+      "definition": "Never select 'Private' in any part of HMIS. If the profile, assessment, or any area is made private then CE staff will not be able to see information and household will never be referred",
+      "category": "HMIS",
+      "testRelevant": true,
+      "keywords": ["never", "private", "warning"]
+    },
+    {
+      "id": "term_039",
+      "term": "Fleeing DV",
+      "definition": "Households fleeing or attempting to flee domestic violence, dating violence, sexual assault, or stalking are eligible for CE but entered as de-identified profiles without personal information in HMIS",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["domestic violence", "fleeing", "de-identified"]
+    },
+    {
+      "id": "term_040",
+      "term": "Institution Types",
+      "definition": "Facilities that count as institutions for CE eligibility: jail, prison, psychiatric hospital, medical hospital, or drug/alcohol treatment program. Must exit within 90 days if homeless before entry",
+      "category": "Eligibility",
+      "testRelevant": true,
+      "keywords": ["jail", "hospital", "treatment"]
+    }
+  ]
+}

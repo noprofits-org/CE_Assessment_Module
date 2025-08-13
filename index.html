@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CE Housing Assessor Study Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-home"></i> CE Housing Assessor</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home" data-section="home">
+                            <i class="fas fa-dashboard"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#flashcards" data-section="flashcards">
+                            <i class="fas fa-cards"></i> Flashcards
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tests" data-section="tests">
+                            <i class="fas fa-clipboard-check"></i> Practice Tests
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#scenarios" data-section="scenarios">
+                            <i class="fas fa-briefcase"></i> Scenarios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#progress" data-section="progress">
+                            <i class="fas fa-chart-line"></i> Progress
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container-fluid mt-5 pt-4">
+        <!-- Dashboard Section -->
+        <section id="home" class="content-section active">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="mb-4">Welcome to CE Housing Assessor Study Tool</h1>
+                    <p class="lead">Master your Housing Assessment skills with interactive flashcards, practice tests, and real-world scenarios.</p>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-calendar-check fa-3x mb-3 text-primary"></i>
+                            <h5>Study Streak</h5>
+                            <h2 id="study-streak">0</h2>
+                            <p class="text-muted">days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-cards fa-3x mb-3 text-success"></i>
+                            <h5>Cards Reviewed</h5>
+                            <h2 id="cards-reviewed">0</h2>
+                            <p class="text-muted">total</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-trophy fa-3x mb-3 text-warning"></i>
+                            <h5>Average Score</h5>
+                            <h2 id="avg-score">0%</h2>
+                            <p class="text-muted">tests</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card stats-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-clock fa-3x mb-3 text-info"></i>
+                            <h5>Study Time</h5>
+                            <h2 id="study-time">0</h2>
+                            <p class="text-muted">minutes today</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <h3>Quick Start</h3>
+                    <div class="d-flex flex-wrap gap-3">
+                        <button class="btn btn-primary btn-lg" onclick="navigateToSection('flashcards')">
+                            <i class="fas fa-cards"></i> Review Flashcards
+                        </button>
+                        <button class="btn btn-success btn-lg" onclick="navigateToSection('tests')">
+                            <i class="fas fa-clipboard-check"></i> Take Practice Test
+                        </button>
+                        <button class="btn btn-info btn-lg" onclick="navigateToSection('scenarios')">
+                            <i class="fas fa-briefcase"></i> Practice Scenarios
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body" id="dashboard-readiness">
+                            <div class="text-center">
+                                <h6>Test Readiness</h6>
+                                <div class="progress" style="height: 25px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 0%">
+                                        0%
+                                    </div>
+                                </div>
+                                <small class="text-muted">0 terms reviewed</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flashcards Section -->
+        <section id="flashcards" class="content-section">
+            <h2 class="mb-4">Flashcards</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Statistics -->
+                    <div id="flashcard-stats"></div>
+                    
+                    <!-- Filter Controls -->
+                    <div id="category-filter" class="mb-3 text-center"></div>
+                    
+                    <!-- Flashcard Container -->
+                    <div class="flashcard-container">
+                        <div class="flashcard" id="flashcard">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h3 id="flashcard-term">Loading...</h3>
+                                </div>
+                                <div class="flashcard-back">
+                                    <p id="flashcard-definition">Loading...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Controls -->
+                        <div class="flashcard-controls mt-4">
+                            <button class="btn btn-secondary" id="prev-card" title="Previous card (←)">
+                                <i class="fas fa-arrow-left"></i> Previous
+                            </button>
+                            <button class="btn btn-primary btn-lg mx-3" id="flip-card" title="Flip card (Space/Enter)">
+                                <i class="fas fa-sync"></i> Flip Card
+                            </button>
+                            <button class="btn btn-secondary" id="next-card" title="Next card (→)">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <button class="btn btn-outline-success btn-sm" id="master-card" title="Mark as mastered (M)">
+                                <i class="fas fa-graduation-cap"></i> Mark as Mastered
+                            </button>
+                        </div>
+                        
+                        <!-- Progress -->
+                        <div class="progress mt-3">
+                            <div class="progress-bar" id="flashcard-progress" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <p class="text-center mt-2">Card <span id="current-card">1</span> of <span id="total-cards">0</span></p>
+                        
+                        <!-- Keyboard shortcuts help -->
+                        <div class="text-center mt-4">
+                            <small class="text-muted">
+                                <strong>Keyboard shortcuts:</strong> 
+                                Space/Enter: Flip | 
+                                ←/→: Navigate | 
+                                M: Master | 
+                                S: Shuffle | 
+                                R: Reset
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Tests Section -->
+        <section id="tests" class="content-section">
+            <h2 class="mb-4">Practice Tests</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div id="test-selection">
+                        <!-- Test selection will be dynamically populated -->
+                    </div>
+
+                    <div id="test-container" class="card" style="display: none;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>Question <span id="question-number">1</span> of <span id="total-questions">10</span></h4>
+                                <div id="timer" class="h4 text-danger" style="display: none;">
+                                    <i class="fas fa-clock"></i> <span id="time-remaining">15:00</span>
+                                </div>
+                            </div>
+                            <div class="progress mb-4">
+                                <div class="progress-bar" id="test-progress" role="progressbar" style="width: 0%"></div>
+                            </div>
+                            
+                            <div id="question-content">
+                                <h5 id="question-text"></h5>
+                                <div id="answer-options" class="mt-3"></div>
+                            </div>
+                            
+                            <div class="mt-4 d-flex justify-content-between">
+                                <button class="btn btn-secondary" id="prev-question" onclick="previousQuestion()">
+                                    <i class="fas fa-arrow-left"></i> Previous
+                                </button>
+                                <button class="btn btn-primary" id="next-question" onclick="nextQuestion()">
+                                    Next <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <button class="btn btn-success" id="submit-test" onclick="submitTest()" style="display: none;">
+                                    <i class="fas fa-check"></i> Submit Test
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="test-results" class="card" style="display: none;">
+                        <div class="card-body text-center">
+                            <h3>Test Complete!</h3>
+                            <div class="my-4">
+                                <h1 class="display-1" id="test-score">0%</h1>
+                                <p class="lead">You got <span id="correct-answers">0</span> out of <span id="total-answers">0</span> correct</p>
+                            </div>
+                            <button class="btn btn-primary" onclick="reviewAnswers()">
+                                <i class="fas fa-eye"></i> Review Answers
+                            </button>
+                            <button class="btn btn-success" onclick="startNewTest()">
+                                <i class="fas fa-redo"></i> New Test
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenarios Section -->
+        <section id="scenarios" class="content-section">
+            <h2 class="mb-4">Practice Scenarios</h2>
+            
+            <!-- Scenario Stats -->
+            <div id="scenario-stats"></div>
+            
+            <!-- Progress Bar -->
+            <div class="row mb-4">
+                <div class="col-lg-10 mx-auto">
+                    <div class="progress" style="height: 25px;">
+                        <div class="progress-bar bg-info" id="scenario-progress" role="progressbar" style="width: 0%;">
+                            <span id="scenario-progress-text">0 / 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scenario Container -->
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div id="scenario-container">
+                        <!-- Scenarios will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Keyboard Shortcuts Help -->
+            <div class="row mt-4">
+                <div class="col-lg-10 mx-auto">
+                    <div class="text-center">
+                        <small class="text-muted">
+                            <strong>Keyboard shortcuts:</strong> 
+                            1-4 or A-D: Select answer | 
+                            ←/→: Navigate scenarios
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="content-section">
+            <h2 class="mb-4">Your Progress Dashboard</h2>
+            
+            <!-- Streak Banner -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div id="streak-display" class="text-center mb-3"></div>
+                    <div id="streak-message" class="alert text-center"></div>
+                </div>
+            </div>
+            
+            <!-- Key Metrics -->
+            <div class="row mb-4">
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-fire fa-2x text-danger mb-2"></i>
+                            <h5>Study Streak</h5>
+                            <h2 id="metric-streak">0 🔥</h2>
+                            <small class="text-muted">days</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-question-circle fa-2x text-primary mb-2"></i>
+                            <h5>Questions Answered</h5>
+                            <h2 id="metric-questions">0</h2>
+                            <small class="text-muted">total</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-chart-line fa-2x text-success mb-2"></i>
+                            <h5>Average Score</h5>
+                            <h2 id="metric-avg-score">0%</h2>
+                            <small class="text-muted">all tests</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-graduation-cap fa-2x text-info mb-2"></i>
+                            <h5>Cards Mastered</h5>
+                            <h2 id="metric-cards-mastered">0</h2>
+                            <small class="text-muted">terms</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Test Type Averages -->
+            <div class="row mb-4" id="test-type-averages">
+                <!-- Dynamically populated -->
+            </div>
+            
+            <!-- Charts Row -->
+            <div class="row mb-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Score Trends</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="score-trend-chart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Category Performance</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="category-radar-chart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Study Recommendations -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-lightbulb"></i> Study Recommendations</h5>
+                        </div>
+                        <div class="card-body" id="study-recommendations">
+                            <!-- Recommendations will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Calendar Heatmap -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Study Consistency Calendar</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="calendar-heatmap"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Management -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-cog"></i> Data Management</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-primary" id="export-data-btn">
+                                    <i class="fas fa-download"></i> Export JSON
+                                </button>
+                                <button class="btn btn-success" id="generate-pdf-btn">
+                                    <i class="fas fa-file-pdf"></i> Generate Report
+                                </button>
+                                <button class="btn btn-warning" id="import-data-btn">
+                                    <i class="fas fa-upload"></i> Import Data
+                                </button>
+                                <button class="btn btn-danger" id="clear-data-btn">
+                                    <i class="fas fa-trash"></i> Clear All Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/flashcards.js"></script>
+    <script src="js/tests.js"></script>
+    <script src="js/scenarios.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

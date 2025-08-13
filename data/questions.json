@@ -1,0 +1,424 @@
+{
+  "questions": [
+    {
+      "id": "q_001",
+      "text": "A young adult aged 23 comes to the RAP and reports they will lose their housing in 10 days. What should the assessor do?",
+      "options": {
+        "A": "Complete a Housing Triage Tool immediately",
+        "B": "Refer them to prevention services only",
+        "C": "Tell them to return when they're actually homeless",
+        "D": "Complete an HTT as they're eligible as an at-risk young adult"
+      },
+      "correct": "D",
+      "explanation": "Young adults (18-24) who are at risk of homelessness within 14 days are eligible for CE services.",
+      "category": "Eligibility",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_002",
+      "text": "What is the first step a Housing Assessor should take at a Regional Access Point before completing a triage tool?",
+      "options": {
+        "A": "Create HMIS enrollment",
+        "B": "Check for warrants",
+        "C": "Discuss Diversion/Problem-Solving services",
+        "D": "Verify income"
+      },
+      "correct": "C",
+      "explanation": "RAP staff should discuss diversion options and employment navigation before completing a triage tool to assess for options outside of CE.",
+      "category": "Process",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_003",
+      "text": "Within what timeframe must Housing Assessors complete all Housing Triage Tools in HMIS?",
+      "options": {
+        "A": "24 hours",
+        "B": "48 hours",
+        "C": "72 hours",
+        "D": "1 week"
+      },
+      "correct": "B",
+      "explanation": "Housing Assessors must complete all Housing Triage Tools in HMIS within 48 hours of when the information was first collected.",
+      "category": "Timeline",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_004",
+      "text": "Sarah fled domestic violence and doesn't want her information in HMIS. How should the assessor proceed?",
+      "options": {
+        "A": "Tell her she cannot receive services without consent",
+        "B": "Enter her as a de-identified profile and send encrypted email to CE",
+        "C": "Enter her information anyway for her safety",
+        "D": "Refer her to a different agency"
+      },
+      "correct": "B",
+      "explanation": "Personal information is not entered in HMIS for people fleeing DV. Enter as de-identified and send encrypted email to alex.ebrahimi@kcrha.org with subject 'De-Identified Household'.",
+      "category": "HMIS",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_005",
+      "text": "A family consists of mom (age 35), dad (age 37), and children ages 16, 18, and 8. How many HMIS consents are needed?",
+      "options": {
+        "A": "2 - one for each adult",
+        "B": "3 - adults sign for themselves",
+        "C": "4 - the 18-year-old signs for themselves",
+        "D": "5 - one for each person"
+      },
+      "correct": "C",
+      "explanation": "Parents sign for minors under 18 (ages 16 and 8). The three adults (mom, dad, and 18-year-old) each sign for themselves.",
+      "category": "Documentation",
+      "difficulty": "Hard"
+    },
+    {
+      "id": "q_006",
+      "text": "Which households should be entered as group enrollments in Coordinated Entry?",
+      "options": {
+        "A": "All households",
+        "B": "Only families with minor children",
+        "C": "Couples without children",
+        "D": "Single adults living together"
+      },
+      "correct": "B",
+      "explanation": "For Coordinated Entry enrollments, only families with minor children at the time of assessment will be entered as a group.",
+      "category": "HMIS",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_007",
+      "text": "John was in jail for 4 months. He was homeless before entering jail. Is he eligible for CE?",
+      "options": {
+        "A": "Yes, he meets institutional stay requirements",
+        "B": "No, he exceeded the 90-day limit",
+        "C": "Only if he has a disability",
+        "D": "Only if he's chronically homeless"
+      },
+      "correct": "B",
+      "explanation": "To be eligible after exiting an institution, the stay must be 90 days or less if they were homeless before entering. 4 months exceeds this limit.",
+      "category": "Eligibility",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_008",
+      "text": "What is the minimum number of assessments a Housing Assessor must complete annually to maintain HMIS access?",
+      "options": {
+        "A": "6 assessments",
+        "B": "10 assessments",
+        "C": "12 assessments",
+        "D": "24 assessments"
+      },
+      "correct": "C",
+      "explanation": "Housing Assessors must conduct at least 1 Housing Triage Tool per month or 12 assessments per year to maintain assessment access in HMIS.",
+      "category": "Training",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_009",
+      "text": "Where must all CE assessments and services be entered in HMIS?",
+      "options": {
+        "A": "In the assessor's home agency",
+        "B": "In the Coordinated Entry System Agency",
+        "C": "In any partner agency",
+        "D": "In the client's preferred agency"
+      },
+      "correct": "B",
+      "explanation": "All trained Housing Assessors must switch to the Coordinated Entry System Agency in HMIS for all Coordinated Entry related work.",
+      "category": "HMIS",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_010",
+      "text": "Maria identifies as a Veteran. What additional document should the assessor obtain?",
+      "options": {
+        "A": "DD-214 discharge papers",
+        "B": "VA medical card",
+        "C": "Department of Veterans Affairs ROI",
+        "D": "Military ID"
+      },
+      "correct": "C",
+      "explanation": "Veterans should sign a Department of Veterans Affairs ROI so they can be discussed at the Veteran's By Name List Case Conferencing meeting.",
+      "category": "Documentation",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_011",
+      "text": "How many questions are in the current Housing Triage Tool (HTT)?",
+      "options": {
+        "A": "2 questions",
+        "B": "5 questions",
+        "C": "10 questions",
+        "D": "15 questions"
+      },
+      "correct": "A",
+      "explanation": "Coordinated Entry assessors will complete a two-question Housing Triage Tool.",
+      "category": "Process",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_012",
+      "text": "Tom refuses to sign HMIS consent. Can he still receive CE services?",
+      "options": {
+        "A": "No, consent is mandatory",
+        "B": "Yes, as a de-identified profile",
+        "C": "Only emergency services",
+        "D": "Only if he's a veteran"
+      },
+      "correct": "B",
+      "explanation": "Households that refuse consent can still receive services. They're entered as de-identified profiles with only a unique identifier number.",
+      "category": "Documentation",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_013",
+      "text": "What is the maximum error rate allowed for CE assessors according to data quality standards?",
+      "options": {
+        "A": "1%",
+        "B": "3%",
+        "C": "5%",
+        "D": "10%"
+      },
+      "correct": "C",
+      "explanation": "CE Trainers must ensure assessor error rates stay under 5% through regular review of data quality reports and dashboards.",
+      "category": "Training",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_014",
+      "text": "A 17-year-old arrives alone at the RAP seeking housing. What should the assessor do?",
+      "options": {
+        "A": "Complete HTT immediately",
+        "B": "Call police for runaway youth",
+        "C": "Explain they're not eligible without a parent/guardian",
+        "D": "Create a de-identified profile"
+      },
+      "correct": "C",
+      "explanation": "Unaccompanied minors (under 18 without parent/guardian) are NOT eligible for CE services independently.",
+      "category": "Eligibility",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_015",
+      "text": "When should a new Current Living Situation (CLS) assessment be created?",
+      "options": {
+        "A": "Only at enrollment start",
+        "B": "Every 30 days",
+        "C": "Each time you provide a CE service or update HTT",
+        "D": "Only when housing status changes"
+      },
+      "correct": "C",
+      "explanation": "Create a new CLS assessment at enrollment start and each time you provide a coordinated entry service, start a new HTT, or update an existing HTT.",
+      "category": "HMIS",
+      "difficulty": "Hard"
+    },
+    {
+      "id": "q_016",
+      "text": "What is chronic homelessness defined as?",
+      "options": {
+        "A": "6 months homeless with disability",
+        "B": "12 consecutive months OR 4+ occasions totaling 12 months over 3 years, with disability",
+        "C": "24 months homeless",
+        "D": "Any homelessness with disability"
+      },
+      "correct": "B",
+      "explanation": "An individual is chronically homeless if homeless for 12 consecutive months+, or 4+ occasions totaling 12 months over 3 years, with a documented disability.",
+      "category": "Eligibility",
+      "difficulty": "Hard"
+    },
+    {
+      "id": "q_017",
+      "text": "The assessor accidentally clicked 'Private' on an assessment. What is the consequence?",
+      "options": {
+        "A": "Extra security for the client",
+        "B": "CE staff cannot see it and household won't be referred",
+        "C": "Only supervisors can view it",
+        "D": "It requires manager approval"
+      },
+      "correct": "B",
+      "explanation": "Never select 'Private' in any part of HMIS. If made private, CE staff won't be able to see information and the household will never be referred to housing.",
+      "category": "HMIS",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_018",
+      "text": "How long is the default ROI expiration period in King County?",
+      "options": {
+        "A": "1 year",
+        "B": "3 years",
+        "C": "5 years",
+        "D": "7 years"
+      },
+      "correct": "D",
+      "explanation": "The End Date will default to seven years from the start date. This is the correct default date for King County.",
+      "category": "Documentation",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_019",
+      "text": "For whom should services be entered in the Coordinated Entry System Agency?",
+      "options": {
+        "A": "Every household member",
+        "B": "Only adults",
+        "C": "Only the Head of Household",
+        "D": "Only consenting members"
+      },
+      "correct": "C",
+      "explanation": "Services only need to be entered for the Head of Household.",
+      "category": "HMIS",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_020",
+      "text": "Since October 2020, how does CE prioritize households?",
+      "options": {
+        "A": "First come, first served",
+        "B": "Based on COVID-19 disproportionate impact",
+        "C": "Random lottery",
+        "D": "Length of homelessness only"
+      },
+      "correct": "B",
+      "explanation": "Since October 2020, CE prioritizes households based on COVID-19 disproportionate impact factors determined by Seattle King County Public Health.",
+      "category": "Process",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_021",
+      "text": "What training must be completed before receiving HMIS access?",
+      "options": {
+        "A": "CE Video only",
+        "B": "Clarity General Training",
+        "C": "Assessor Refresher",
+        "D": "VAWA training"
+      },
+      "correct": "B",
+      "explanation": "All Clarity Human Services (HMIS) users must complete Clarity General Training before being granted database access.",
+      "category": "Training",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_022",
+      "text": "A client completed a VI-SPDAT 8 months ago. Do they need a new Housing Triage Tool?",
+      "options": {
+        "A": "Yes, it's outdated",
+        "B": "Yes, VI-SPDATs aren't valid",
+        "C": "No, existing VI-SPDATs remain valid",
+        "D": "Only if their situation changed"
+      },
+      "correct": "C",
+      "explanation": "Households with a Housing Triage Tool or VI-SPDAT completed prior to the change don't need to complete a new HTT.",
+      "category": "Process",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_023",
+      "text": "What is the minimum diversion service duration according to CE guidelines?",
+      "options": {
+        "A": "30 days",
+        "B": "60 days",
+        "C": "90 days",
+        "D": "120 days"
+      },
+      "correct": "C",
+      "explanation": "Diversion has 30 days to complete services, with a minimum duration of 90 days for the diversion period.",
+      "category": "Timeline",
+      "difficulty": "Hard"
+    },
+    {
+      "id": "q_024",
+      "text": "Which agency is the Coordinating Entity for CE in King County?",
+      "options": {
+        "A": "United Way",
+        "B": "KCRHA",
+        "C": "City of Seattle",
+        "D": "DSHS"
+      },
+      "correct": "B",
+      "explanation": "King County Regional Homelessness Authority (KCRHA) is the Coordinating Entity for CE.",
+      "category": "Process",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_025",
+      "text": "A couple without children needs CE services. How should they be enrolled?",
+      "options": {
+        "A": "As a group enrollment",
+        "B": "With individual enrollments",
+        "C": "Under one person only",
+        "D": "As a family unit"
+      },
+      "correct": "B",
+      "explanation": "Single adults and couples without children receive individual enrollments. Only families with minor children use group enrollments.",
+      "category": "HMIS",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_026",
+      "text": "What phone number should assessors call for Clarity/HMIS technical support?",
+      "options": {
+        "A": "206-444-4001 x1",
+        "B": "206-444-4001 x2",
+        "C": "877-501-2233",
+        "D": "206-501-2233"
+      },
+      "correct": "B",
+      "explanation": "Contact Bitfocus helpdesk at (206) 444-4001 ext. 2 for HMIS/Clarity support and new user accounts.",
+      "category": "HMIS",
+      "difficulty": "Hard"
+    },
+    {
+      "id": "q_027",
+      "text": "How often must Housing Assessors attend refresher training?",
+      "options": {
+        "A": "Every 6 months",
+        "B": "At least once per 12-month period",
+        "C": "Every 2 years",
+        "D": "Only when policies change"
+      },
+      "correct": "B",
+      "explanation": "All Housing Assessors must attend at least one Assessor Refresher training in a 12-month period.",
+      "category": "Training",
+      "difficulty": "Easy"
+    },
+    {
+      "id": "q_028",
+      "text": "When completing electronic signature for ROI, what is the correct sequence?",
+      "options": {
+        "A": "Sign, Save, Apply",
+        "B": "Apply, Sign, Save",
+        "C": "Sign, Apply, Save, Add Record",
+        "D": "Save, Apply, Sign"
+      },
+      "correct": "C",
+      "explanation": "For electronic ROI: have client sign, click Apply, then Save, then Add Record to complete the process.",
+      "category": "Documentation",
+      "difficulty": "Hard"
+    },
+    {
+      "id": "q_029",
+      "text": "What happens if a household has a Housing Triage Tool but hasn't updated info in months?",
+      "options": {
+        "A": "They're automatically removed",
+        "B": "They remain potentially eligible for prioritization",
+        "C": "They must complete a new HTT",
+        "D": "They go to bottom of list"
+      },
+      "correct": "B",
+      "explanation": "Households with existing HTTs remain potentially eligible for prioritization as long as they remain active in the CE System Agency Program.",
+      "category": "Process",
+      "difficulty": "Medium"
+    },
+    {
+      "id": "q_030",
+      "text": "What document helps Veterans get on the By Name List for case conferencing?",
+      "options": {
+        "A": "Standard HMIS ROI",
+        "B": "Department of Veterans Affairs ROI",
+        "C": "DD-214",
+        "D": "VA benefits letter"
+      },
+      "correct": "B",
+      "explanation": "Veterans who sign a Department of Veterans Affairs ROI can be discussed at the Veteran's By Name List Case Conferencing meeting.",
+      "category": "Documentation",
+      "difficulty": "Medium"
+    }
+  ]
+}

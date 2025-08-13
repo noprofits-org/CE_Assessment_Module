@@ -1,0 +1,260 @@
+{
+  "scenarios": [
+    {
+      "id": "s_001",
+      "title": "Unaccompanied Minor at RAP",
+      "description": "A 17-year-old arrives alone at the RAP seeking shelter. They state they've been staying with different friends for the past two weeks after their parents kicked them out.",
+      "question": "What is the appropriate action?",
+      "options": {
+        "A": "Complete the CE assessment immediately",
+        "B": "Contact Child Protective Services as they are an unaccompanied minor",
+        "C": "Proceed with regular adult assessment process",
+        "D": "Provide emergency shelter without assessment"
+      },
+      "correct": "B",
+      "explanation": "Unaccompanied minors under 18 are not eligible for CE and must be referred to appropriate youth services or Child Protective Services.",
+      "relatedConcepts": ["Unaccompanied Minor", "Eligibility", "RAP Process"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "s_002",
+      "title": "Family Doubled Up",
+      "description": "A family of four (2 adults, 2 children ages 8 and 12) reports they've been staying with relatives for the past 3 months. The relatives have given them 7 days to leave due to lease violations.",
+      "question": "Are they eligible for CE assessment?",
+      "options": {
+        "A": "Yes, they meet the HUD definition of homelessness",
+        "B": "No, they are housed and not literally homeless",
+        "C": "Only if they have documentation from the relatives",
+        "D": "Yes, but only after they actually leave the relative's home"
+      },
+      "correct": "B",
+      "explanation": "Families doubled up with relatives are not considered literally homeless under HUD's definition. They would need to be in a place not meant for human habitation, emergency shelter, or transitional housing to be eligible.",
+      "relatedConcepts": ["HUD Definition", "Literally Homeless", "Doubled Up"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "s_003",
+      "title": "Living in Vehicle",
+      "description": "A person reports they've been sleeping in their car at a highway rest stop for the past week. The car is registered and operational.",
+      "question": "Does this person meet the definition of literal homelessness?",
+      "options": {
+        "A": "No, because they have a vehicle",
+        "B": "Yes, a car is not meant for human habitation",
+        "C": "Only if the car is not operational",
+        "D": "Only if they've been there more than 14 days"
+      },
+      "correct": "B",
+      "explanation": "A car, even if operational, is considered a place not meant for human habitation. This person meets the HUD definition of literal homelessness.",
+      "relatedConcepts": ["Place Not Meant for Human Habitation", "Literally Homeless", "Vehicle"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "s_004",
+      "title": "Recent Jail Release",
+      "description": "An individual was released from county jail this morning after serving 120 days. They have no place to go and are seeking shelter.",
+      "question": "Are they eligible for CE assessment?",
+      "options": {
+        "A": "No, they were housed in an institution",
+        "B": "Yes, if they were homeless before incarceration",
+        "C": "Yes, they are literally homeless now",
+        "D": "Only after 7 days on the street"
+      },
+      "correct": "C",
+      "explanation": "The person is currently literally homeless as they have no place to go. Previous institutional stays don't disqualify someone if they are currently experiencing literal homelessness.",
+      "relatedConcepts": ["Institutional Stay", "Literally Homeless", "Eligibility"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "s_005",
+      "title": "Pregnant Young Adult",
+      "description": "A 19-year-old who is 6 months pregnant arrives at the RAP alone. She's been sleeping outside for 3 nights after leaving an abusive relationship.",
+      "question": "What special considerations apply?",
+      "options": {
+        "A": "She must be assessed as a family",
+        "B": "She requires immediate shelter placement without assessment",
+        "C": "She should be assessed as a single adult with vulnerability noted",
+        "D": "She is not eligible until the baby is born"
+      },
+      "correct": "C",
+      "explanation": "A pregnant individual without children present is assessed as a single adult, but pregnancy should be noted as a vulnerability factor that may affect prioritization.",
+      "relatedConcepts": ["Vulnerability", "Single Adult", "Prioritization"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "s_006",
+      "title": "Fleeing Domestic Violence",
+      "description": "A person reports they left their apartment 5 days ago due to domestic violence and have been staying with a friend. The friend can only let them stay 2 more nights.",
+      "question": "What is their current eligibility status?",
+      "options": {
+        "A": "Eligible immediately as a DV survivor",
+        "B": "Not eligible - they are currently housed",
+        "C": "Eligible only with DV documentation",
+        "D": "Must wait until they leave the friend's place"
+      },
+      "correct": "B",
+      "explanation": "While fleeing DV, they are currently staying with a friend and are not literally homeless. They would become eligible once they have no safe housing option.",
+      "relatedConcepts": ["Domestic Violence", "Literally Homeless", "Temporary Accommodation"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "s_007",
+      "title": "Impending Homelessness",
+      "description": "A young adult has a written eviction notice giving them 10 days to vacate their apartment. They have no resources or place to go.",
+      "question": "Can they receive CE assessment now?",
+      "options": {
+        "A": "Yes, they will be homeless in 14 days or less",
+        "B": "No, they must wait until they're actually homeless",
+        "C": "Yes, but only for prevention services",
+        "D": "Only if they have proof of eviction"
+      },
+      "correct": "B",
+      "explanation": "CE assessment is for those who are literally homeless. Someone facing eviction but still housed would need to be referred to prevention services, not CE.",
+      "relatedConcepts": ["Prevention", "Literally Homeless", "At Risk"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "s_008",
+      "title": "Veteran in Transitional Housing",
+      "description": "A veteran has been in VA transitional housing for 18 months. The program is ending and they need permanent housing.",
+      "question": "Are they eligible for CE assessment?",
+      "options": {
+        "A": "No, they are housed in a program",
+        "B": "Yes, transitional housing residents are considered homeless",
+        "C": "Only if the program is ending within 14 days",
+        "D": "Veterans use a separate system"
+      },
+      "correct": "B",
+      "explanation": "Residents of transitional housing programs are considered literally homeless under HUD's definition and are eligible for CE assessment.",
+      "relatedConcepts": ["Transitional Housing", "HUD Definition", "Veteran"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "s_009",
+      "title": "Hospital Discharge",
+      "description": "Hospital social worker calls about a patient being discharged in 2 hours with no place to go. The patient has been hospitalized for 5 days.",
+      "question": "What is the appropriate CE response?",
+      "options": {
+        "A": "Complete assessment over the phone with social worker",
+        "B": "Patient must come to RAP after discharge",
+        "C": "Hospital should keep them until housing is found",
+        "D": "Provide shelter bed to prevent discharge to street"
+      },
+      "correct": "B",
+      "explanation": "The patient needs to be literally homeless to be assessed. They should be referred to come to the RAP after discharge, or staff can do outreach if appropriate.",
+      "relatedConcepts": ["Discharge Planning", "Literally Homeless", "RAP Process"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "s_010",
+      "title": "Family Camping",
+      "description": "A family reports they've been camping in a state park for 2 weeks. They have a tent and camping equipment but no permanent address.",
+      "question": "Do they meet the definition of literal homelessness?",
+      "options": {
+        "A": "No, they have shelter (tent)",
+        "B": "Yes, camping areas are not meant for habitation",
+        "C": "Only if they're in an unauthorized area",
+        "D": "Depends on the weather conditions"
+      },
+      "correct": "B",
+      "explanation": "Camping in parks, even with equipment, constitutes living in a place not meant for human habitation and meets the definition of literal homelessness.",
+      "relatedConcepts": ["Place Not Meant for Human Habitation", "Literally Homeless", "Unsheltered"],
+      "difficulty": "easy"
+    },
+    {
+      "id": "s_011",
+      "title": "Motel Voucher Ending",
+      "description": "A person has been in a motel paid for by a church for the past week. The church can only pay for 2 more nights.",
+      "question": "What is their current status for CE?",
+      "options": {
+        "A": "Eligible now because it's temporary",
+        "B": "Not eligible while in motel",
+        "C": "Eligible only with church verification",
+        "D": "Must be assessed before voucher ends"
+      },
+      "correct": "B",
+      "explanation": "Motel stays paid by non-profit organizations are considered housed situations. They would become eligible once they no longer have the motel option.",
+      "relatedConcepts": ["Temporary Accommodation", "Third-Party Payment", "Housed Status"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "s_012",
+      "title": "Returning from Treatment",
+      "description": "Someone completed a 30-day residential substance abuse treatment program yesterday. They have no home to return to and slept outside last night.",
+      "question": "What is their eligibility status?",
+      "options": {
+        "A": "Must wait 7 days after treatment",
+        "B": "Not eligible due to recent institutional stay",
+        "C": "Eligible - they are literally homeless",
+        "D": "Need verification from treatment center"
+      },
+      "correct": "C",
+      "explanation": "They are currently literally homeless (slept outside). Recent stays in treatment don't affect eligibility if the person is currently experiencing literal homelessness.",
+      "relatedConcepts": ["Treatment Facility", "Literally Homeless", "Institutional Stay"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "s_013",
+      "title": "Living in RV",
+      "description": "A person has been living in an RV parked on a friend's property for 6 months. The friend wants them to leave immediately.",
+      "question": "What is their current homelessness status?",
+      "options": {
+        "A": "Homeless - RV is not permanent housing",
+        "B": "Housed - they have shelter with permission",
+        "C": "Depends on RV condition",
+        "D": "Homeless only if RV lacks utilities"
+      },
+      "correct": "B",
+      "explanation": "Living in an RV with permission on private property is considered a housed situation. They would need to be living in the RV in a place not meant for habitation to be considered homeless.",
+      "relatedConcepts": ["RV", "Permission to Stay", "Housed Status"],
+      "difficulty": "hard"
+    },
+    {
+      "id": "s_014",
+      "title": "Foster Care Aging Out",
+      "description": "A 21-year-old aged out of foster care 3 years ago. They've been couch surfing and are now sleeping in a 24-hour laundromat.",
+      "question": "What factors are relevant for CE assessment?",
+      "options": {
+        "A": "Foster care history makes them automatically eligible",
+        "B": "They're eligible due to current unsheltered status",
+        "C": "Must verify foster care history first",
+        "D": "Too old for youth-specific programs only"
+      },
+      "correct": "B",
+      "explanation": "They are eligible because they're currently unsheltered (laundromat). Foster care history may be relevant for prioritization but doesn't determine eligibility.",
+      "relatedConcepts": ["Foster Care", "Unsheltered", "Transition Age Youth"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "s_015",
+      "title": "Emergency Shelter Wait List",
+      "description": "A person has been on the emergency shelter wait list for 5 days while sleeping outside. The shelter calls saying a bed is available tonight.",
+      "question": "Should CE assessment be completed?",
+      "options": {
+        "A": "No, they're getting shelter tonight",
+        "B": "Yes, complete assessment for long-term planning",
+        "C": "Only if they refuse the shelter bed",
+        "D": "Wait 7 days to see if they stay in shelter"
+      },
+      "correct": "B",
+      "explanation": "CE assessment should be completed regardless of emergency shelter entry. CE is about assessing for appropriate housing interventions, not just emergency shelter.",
+      "relatedConcepts": ["Emergency Shelter", "CE Assessment", "Housing Planning"],
+      "difficulty": "medium"
+    },
+    {
+      "id": "s_016",
+      "title": "Seasonal Worker",
+      "description": "A seasonal farm worker's employment and employer-provided housing ended 3 days ago. They've been sleeping in their car since then.",
+      "question": "What is their homelessness status?",
+      "options": {
+        "A": "Not homeless - temporary work situation",
+        "B": "Literally homeless - living in vehicle",
+        "C": "Only eligible during work season",
+        "D": "Must prove they can't return home"
+      },
+      "correct": "B",
+      "explanation": "They are literally homeless as they're living in a vehicle. Previous housing tied to employment doesn't affect current eligibility if they're now unsheltered.",
+      "relatedConcepts": ["Seasonal Employment", "Vehicle", "Literally Homeless"],
+      "difficulty": "easy"
+    }
+  ]
+}
